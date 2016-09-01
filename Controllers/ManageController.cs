@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Ryan_BugTracker.Models;
+using System.IO;
 
 namespace Ryan_BugTracker.Controllers
 {
@@ -277,7 +278,7 @@ namespace Ryan_BugTracker.Controllers
         }
 
         //
-        // GET: /Manage/ChangePassword
+        // GET: /Manage/UpdateInformation
         public ActionResult UpdateInformation()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -285,7 +286,7 @@ namespace Ryan_BugTracker.Controllers
             model.FirstName = user.FirstName;
             model.LastName = user.LastName;
             model.PhoneNumber = user.PhoneNumber;
-
+            model.ProfilePic = user.ProfilePic;
 
             return View(model);
         }
@@ -294,16 +295,33 @@ namespace Ryan_BugTracker.Controllers
         // POST: /Manage/UpdateInformation
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateInformation(UpdateInformationViewModel model)
+        public ActionResult UpdateInformation(UpdateInformationViewModel model, HttpPostedFileBase image)
         {
             if (!ModelState.IsValid)
-            {
+            {               
                 return View(model);
             }
+
             var user = UserManager.FindById(User.Identity.GetUserId());
+
+            var pPic = model.ProfilePic;
+            if (ImageUploadValidator.IsWebFriendlyImage(image))
+            {
+                var fileName = Path.GetFileName(image.FileName);
+                image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName));
+                pPic = "/ProfilePics/" + fileName;
+            }
+
+            var defaultMedia = "/assets/img/RyanChapman_gemRedLarge.png";
+            if (String.IsNullOrWhiteSpace(user.ProfilePic))
+            {
+                pPic = defaultMedia;
+            }
+          
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.PhoneNumber = model.PhoneNumber;
+            user.ProfilePic = pPic;
             UserManager.Update(user);
 
             return RedirectToAction("Index", new { Message = ManageMessageId.UpdateInformationSuccess });

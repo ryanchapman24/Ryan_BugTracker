@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<Ryan_BugTracker.Models.Project>
 @using Ryan_BugTracker.Models
 @using Microsoft.AspNet.Identity;
-
-@{ 
-    var tTotal = 140;
-    var tComplete = 2;
-}
+@using Ryan_BugTracker.Models.Helpers;
+@using System.Collections.Generic;
+@using System.Linq;
 
 @*<div class="row">
     <div class="col-md-4 ">
@@ -37,74 +35,131 @@
 <div class="content">
     <div class="main-header">
         <h2>DASHBOARD</h2>
-        <em>the first priority information</em>
+        <em>Welcome to EvoLv3</em>
     </div>
+    @*<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo modal</button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Modal dialog content...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
+                    <button type="button" class="btn btn-custom-primary"><i class="fa fa-check-circle"></i> Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
     <div class="main-content">
         <div class="row">
             <div class="col-md-9">
-                <!-- WIDGET NO HEADER -->
+            <!-- WIDGET NO HEADER -->
+            @{
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            ProjectAssignmentsHelper ph = new ProjectAssignmentsHelper(db);
+            IList<Project> projects = new List<Project>();
+
+            if (User.IsInRole("Administrator"))
+            {
+                projects = db.Projects.ToList();
+            }
+            else
+            {
+                projects = ph.ListUserProjects(User.Identity.GetUserId());
+            }
+                if (projects.Count() > 0)
+                {
                 <div class="widget widget-hide-header">
-                    <div class="widget-header hide">
-                        <h3>Summary Info</h3>
+                    <div class="widget-header">
+                        <h3>My Projects</h3>
                     </div>
                     <div class="widget-content">
-                        <div class="row">
+                        <div class="row">                                                           
+                            @foreach (var proj in projects)
+                            {
                             <div class="col-md-3">
-                                <div class="easy-pie-chart green" data-percent="@(tTotal/tComplete)">
-                                    <span class="percent">@(tTotal/tComplete)</span>
-                                </div>
-                                <p class="text-center">Task Completion</p>
+                                <a href="@Url.Action("Details", "Projects", new { id = proj.Id })">
+                                    <div class="easy-pie-chart red" data-percent="100">
+                                            <span style="line-height: 110px">
+                                                <span style="" class="fa-stack fa-4x">
+                                                    <i class="fa fa-circle fa-stack-2x" style="color:white"></i>
+                                                    <i class="fa fa-briefcase fa-stack-1x fa-inverse" style="color:#555"></i>
+                                                </span>
+                                            </span>
+                                    </div>
+                                </a>
+                                <p class="text-center"><strong>@proj.Title</strong></p>
                             </div>
-                            <div class="col-md-3">
+                            }
+                                                                                            
+                            @*<div class="col-md-3">
                                 <div class="easy-pie-chart red" data-percent="22">
                                     <span class="percent">22</span>
                                 </div>
                                 <p class="text-center">Overall Project Completion</p>
-                            </div>
-                            <div class="col-md-3">
+                            </div>*@
+                            @*<div class="col-md-3">
                                 <div class="easy-pie-chart yellow" data-percent="65">
                                     <span class="percent">65</span>
                                 </div>
                                 <p class="text-center">Disk Space Used</p>
-                            </div>
-                            <div class="col-md-3">
+                            </div>*@
+                            @*<div class="col-md-3">
                                 <div class="easy-pie-chart red" data-percent="87">
                                     <span class="percent">87</span>
                                 </div>
                                 <p class="text-center">Bandwidth Used</p>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
-                <!-- WIDGET NO HEADER -->
+                }
+            }
+            <!-- WIDGET NO HEADER -->
             </div>
             <div class="col-md-3">
                 <!-- WIDGET REMINDER -->
-                <div class="widget widget-hide-header widget-reminder">
-                    <div class="widget-header hide">
-                        <h3>Today's Reminder</h3>
-                    </div>
-                    <div class="widget-content">
-                        <div class="today-reminder">
-                            <h4 class="reminder-title">Project Meeting</h4>
-                            <p class="reminder-time"><i class="fa fa-clock-o"></i> 9:00 AM</p>
-                            <p class="reminder-place">War Room</p>
-                            <em class="reminder-notes">Bring weekly report summary</em>
-                            <i class="fa fa-bell"></i>
-                            <div class="btn-group btn-group-xs">
-                                <button type="button" class="btn btn-warning"><i class="fa fa-cloud-upload"></i> Sync</button>
-                                <div class="btn-group  btn-group-xs">
-                                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Remind Me <span class="caret"></span></button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">15 minutes later</a></li>
-                                        <li><a href="#">30 minutes later</a></li>
-                                        <li><a href="#">1 hour later</a></li>
-                                    </ul>
-                                </div>
+                @{
+                    var user = User.Identity.GetUserId();
+                    var notes = db.Notifications.Where(u => u.NotifyUserId == user);
+
+                    if (ViewBag.Notifications.Count > 0 && User.IsInRole("Developer"))
+                    {
+                    var rem = notes.ToList().Last();
+
+                    <div class="widget widget-hide-header widget-reminder">
+                        <div class="widget-header hide">
+                            <h3>Today's Reminder</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="today-reminder">
+                                <h4 class="reminder-title">New Notification - @rem.Created.ToString("d")</h4>
+                                <p class="reminder-time"><i class="fa fa-clock-o"></i> @rem.Created.ToString("t")</p>
+                                <p class="reminder-place">For @rem.NotifyUser.DisplayName</p>
+                                <em class="reminder-notes">@rem.Description</em>
+                                <i class="fa fa-bell" style="margin-top: -20px"></i>
+                                @*<div class="btn-group btn-group-xs">
+                                    <button type="button" class="btn btn-warning"><i class="fa fa-cloud-upload"></i> Sync</button>
+                                    <div class="btn-group  btn-group-xs">
+                                        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Remind Me <span class="caret"></span></button>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="#">15 minutes later</a></li>
+                                            <li><a href="#">30 minutes later</a></li>
+                                            <li><a href="#">1 hour later</a></li>
+                                        </ul>
+                                    </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
-                </div>
+                    }
+                }
                 <!-- END WIDGET REMINDER -->
             </div>
         </div>
@@ -113,13 +168,33 @@
             <div class="widget-header">
                 <h3>
                     <i class="fa fa-group"></i> Support Tickets
-                    <span style="padding-left: 20px; font-size: 16px">|</span>
-                    <span style="font-size: 12px; padding-left: 20px">To create a ticket, go to @Html.ActionLink("Your Projects", "ProjectList", "Projects", null, htmlAttributes: new { style = "font-size: 12px; text-decoration: none" }).</span>
+                        <span style="padding-left: 20px; font-size: 16px">|</span>
+                        <span style="font-size: 12px; padding-left: 20px">To create a ticket, go to your @Html.ActionLink("Projects", "ProjectList", "Projects", null, htmlAttributes: new { style = "font-size: 12px; text-decoration: none" }).</span>
                 </h3>
                 <div class="btn-group widget-header-toolbar">
                     <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
                     <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
                 </div>
+                @{
+                var crits = (List<Ticket>)ViewBag.tickets;
+                var cCount = crits.Where(c => c.TicketPriority.Name.Equals("Critical")).Count();
+
+                if (cCount > 0)
+                {
+                    if (cCount == 1)
+                    {
+                        <div class="widget-header-toolbar">
+                            <div class="label label-critical"><i class="fa fa-warning"></i> @cCount Critical Ticket</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="widget-header-toolbar">
+                            <div class="label label-critical"><i class="fa fa-warning"></i> @cCount Critical Tickets</div>
+                        </div>
+                    }
+                }
+                }
             </div>
             <div class="widget-content">
                 <table id="datatable-data-export" class="table table-sorting table-striped table-hover table-bordered datatable">
@@ -134,17 +209,16 @@
                             <th>Assignment</th>
                             <th>Status</th>
                             <th>Action</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         @{ 
                             
-                            foreach (var nextTicket in (List<Ticket>)ViewBag.tickets) //
+                            foreach (var nextTicket in (List<Ticket>)ViewBag.tickets)
                             {
                             <tr style="font-size: 10px">
                                 <td>
-                                    @nextTicket.Created.ToString("g")
+                                    @nextTicket.Created.ToString("yyyy-MM-dd")
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => nextTicket.Title)
@@ -158,8 +232,23 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => nextTicket.TicketType.Name)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => nextTicket.TicketPriority.Name)
+                                <td style="font-size: 12px">
+                                    @if (nextTicket.TicketPriority.Name == "Low")
+                                    {
+                                    <span class="label label-medium">Low</span>
+                                    }
+                                    @if (nextTicket.TicketPriority.Name == "Medium")
+                                    {
+                                    <span class="label label-urgent">Medium</span>
+                                    }
+                                    @if (nextTicket.TicketPriority.Name == "High")
+                                    {
+                                    <span class="label label-emergency">High</span>
+                                    }
+                                    @if (nextTicket.TicketPriority.Name == "Critical")
+                                    {
+                                    <span class="label label-critical">Critical</span>
+                                    }
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => nextTicket.AssignedToUser.DisplayName)

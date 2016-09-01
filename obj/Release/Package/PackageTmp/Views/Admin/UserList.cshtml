@@ -4,58 +4,6 @@
     ViewBag.Title = "UserList";
 }
 
-@*<table class="table">
-    <tr>
-        <th>
-            Last Name
-        </th>
-        <th>
-            First Name
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Phone Number
-        </th>
-        <th>
-            Roles
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.user.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.user.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.user.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.user.PhoneNumber)
-            </td>
-            <td>
-                @foreach (var role in item.roles)
-                {
-                    <p>@role</p>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Manage Roles", "EditUserRoles", new { id = item.user.Id }) <br />
-                @Html.ActionLink("Manage Assignments", "EditUserAssignments", new { id = item.user.Id }) <br />
-                @Html.ActionLink("Profile", "Details", new { id = item.user.Id }) <br />
-                @Html.ActionLink("Delete", "Delete", new { id = item.user.Id }) <br />
-            </td>
-        </tr>
-    }
-
-</table>*@
-
 <div class="widget widget-table">
     <div class="widget-header">
         <h3>
@@ -103,8 +51,7 @@
                             </td>
                             <td>
                                 @Html.ActionLink("Manage Roles", "EditUserRoles", new { id = item.user.Id }) <br />
-                                @Html.ActionLink("Manage Assignments", "EditUserAssignments", new { id = item.user.Id }) <br />
-                                @Html.ActionLink("Profile", "Details", new { id = item.user.Id }) <br />
+                                @Html.ActionLink("Profile", "ProfilePage", "Home", new { id = item.user.Id }, null) <br />
                                 @Html.ActionLink("Delete", "Delete", new { id = item.user.Id }) <br />
                             </td>
                         </tr>

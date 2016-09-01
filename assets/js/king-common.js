@@ -359,13 +359,13 @@ $(document).ready(function(){
 		var ringSound = new Audio();
 
 		if ( navigator.userAgent.match("Firefox/") ) {
-			ringSound.src = "assets/audio/bell-ringing.ogg";
+			ringSound.src = "/assets/audio/bell-ringing.ogg";
 		}else {
-			ringSound.src = "assets/audio/bell-ringing.mp3";
+			ringSound.src = "/assets/audio/bell-ringing.mp3";
 		}
 		
 		function ringIt() {
-			if( count < 3)	{ // adjust it with the css ring animation at .today-reminder
+			if( count < 2)	{ // adjust it with the css ring animation at .today-reminder
 
 				// sound setting saved on localStorage as 0 or 1, by default sound on (null value on localStorage)
 				$globalVolume = localStorage.getItem('global-volume');

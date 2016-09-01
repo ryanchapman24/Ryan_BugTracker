@@ -22,6 +22,7 @@ namespace Ryan_BugTracker.Models
             this.TicketComments = new HashSet<TicketComment>();
             this.TicketAttachments = new HashSet<TicketAttachment>();
             this.TicketHistories = new HashSet<TicketHistory>();
+            this.Notifications = new HashSet<Notification>();
         }
 
         public virtual ICollection<Project> Projects { get; set; }
@@ -29,6 +30,7 @@ namespace Ryan_BugTracker.Models
         public virtual ICollection<TicketComment> TicketComments { get; set; }
         public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
         public virtual ICollection<TicketHistory> TicketHistories { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -60,5 +62,6 @@ namespace Ryan_BugTracker.Models
         public DbSet<TicketStatus> TicketStatuses { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<TicketPriority> TicketPriorities { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

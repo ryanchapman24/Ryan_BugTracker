@@ -11,7 +11,7 @@
             <img style="margin-left: -20px" src="~/assets/img/RyanChapman_Evolv3_Bigger.png" alt="" />
         </div>
         <div style="margin-top: -15px" class="register-box center-block">
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <form>
@@ -28,6 +28,8 @@
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })                      
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "confirm password" })
+                    <input name="image" type="file" class="form-control" id="fileUpload" />
+                        @Html.ValidationMessageFor(model => model.ProfilePic, "", new { @class = "text-danger" })
                     <label class="fancy-checkbox">
                         <input type="checkbox">
                         <span>I accept the <a href="#">Terms &amp; Agreements</a></span>

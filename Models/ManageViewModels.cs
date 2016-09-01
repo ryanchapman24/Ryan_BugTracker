@@ -66,17 +66,16 @@ namespace Ryan_BugTracker.Models
 
         [Required]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        //[Required]
-        //[EmailAddress]
-        //[Display(Name = "Email")]
-        //public string Email { get; set; }
+        public string LastName { get; set; }       
 
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Profile Picture")]
+        public string ProfilePic { get; set; }
     }
 
     public class AddPhoneNumberViewModel

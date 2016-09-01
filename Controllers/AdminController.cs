@@ -118,12 +118,5 @@ namespace Ryan_BugTracker.Controllers
             }
             base.Dispose(disposing);
         }
-
-        // GET: Admin/EditUserAssignments
-        [Authorize(Roles = "Administrator")]
-        public ActionResult EditUserAssignments()
-        {
-            return View();
-        }
     }
 }

@@ -39,13 +39,13 @@
                     {
                         <tr style="font-size: 10px">
                             <td>
-                                @item.Created.ToString("d")
+                                @item.Created.ToString("yyyy - MM - dd")
                                 <p style="font-size: 10px">by <span style="color: #428BCA"><em>@item.AuthorUserId</em></span></p>
                             </td>
                             <td>
                                 @if (item.Updated.HasValue)
                                 {
-                                    @item.Updated.Value.ToString("d")
+                                    @item.Updated.Value.ToString("yyyy - MM - dd")
                                 }
                             </td>
                             <td>

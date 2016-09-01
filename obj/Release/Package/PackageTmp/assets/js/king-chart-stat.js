@@ -13,9 +13,9 @@ $(document).ready(function(){
 			lineCap: "square",
 			lineWidth: 5,
 			barColor: "#ef1e25",
-			onStep: function(from, to, percent) {
-				$(this.el).find('.percent').text(Math.round(percent));
-			}
+			//onStep: function(from, to, percent) {
+			//	$(this.el).find('.percent').text(Math.round(percent));
+			//}
 		}
 
 		cOptions.barColor = "#3E9C1A"; // green

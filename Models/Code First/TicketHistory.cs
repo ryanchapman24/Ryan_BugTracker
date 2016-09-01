@@ -11,6 +11,7 @@ namespace Ryan_BugTracker.Models
         public int Id { get; set; }
         [Required]
         public string Property { get; set; }
+        public string Dialogue { get; set; }
         public string OldValue { get; set; }
         public string NewValue { get; set; }
         public DateTimeOffset Changed { get; set; }

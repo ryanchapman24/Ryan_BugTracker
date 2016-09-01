@@ -15,7 +15,9 @@ namespace Ryan_BugTracker.Models
         {
             if (User.Identity.IsAuthenticated)
             {
-                var user = db.Users.Find(User.Identity.GetUserId());
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.UserName.Equals(User.Identity.Name));
+                //var user = db.Users.Find(User.Identity.GetUserId());
+                ViewBag.Notifications = user.Notifications.OrderByDescending(c => c.Created).ToList();
                 ViewBag.ProfilePic = user.ProfilePic;
                 ViewBag.DisplayName = user.DisplayName;
                 ViewBag.FirstName = user.FirstName;

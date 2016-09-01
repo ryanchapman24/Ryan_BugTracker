@@ -156,22 +156,16 @@ namespace Ryan_BugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var pPic = "";
+                var pPic = "/assets/img/RyanChapman_gemRedLarge.png";
 
-                //if (ImageUploadValidator.IsWebFriendlyImage(image))
-                //{
-                //    var fileName = Path.GetFileName(image.FileName);
-                //    image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName));
-                //    pPic = "~/ProfilePics/" + fileName;
-                //}
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/ProfilePics/"), fileName));
+                    pPic = "/ProfilePics/" + fileName;
+                }
 
-                //var defaultMedia = "/assets/img/RyanChapman_gemRedLarge.png";
-                //if (String.IsNullOrWhiteSpace(pPic))
-                //{
-                //    pPic = defaultMedia;
-                //}
-
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName, PhoneNumber = model.PhoneNumber/*, ProfilePic = pPic*/  };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DisplayName = model.FirstName + ' ' + model.LastName, PhoneNumber = model.PhoneNumber, ProfilePic = pPic };
                 var result = await UserManager.CreateAsync(user, model.Password);               
 
                 if (result.Succeeded)

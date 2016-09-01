@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*	
 *	############################################################################
 *	
@@ -15146,7 +15146,7 @@ input {
   color: #fff;
 }
 .top-bar .logged-user .dropdown-menu {
-  left: -38px;
+  right: -13.5px;
   top: 31px;
   padding: 0;
 }
@@ -17507,8 +17507,8 @@ input.ui-editRangeSlider-inputValue {
   }
 }
 .nav.nav-tabs-custom-colored > li.active > a, .nav.nav-tabs-custom-colored > li.active > a:hover, .nav.nav-tabs-custom-colored > li.active > a:focus {
-  background-color: #296EAA;
-  color: #fff;
+  background-color: #cceeff;
+  color: black;
   cursor: pointer;
 }
 .nav.nav-tabs-custom-colored.nav-tabs-right > li {
@@ -17672,8 +17672,9 @@ input.ui-editRangeSlider-inputValue {
   position: relative;
   overflow: hidden;
   padding: 20px;
-  background-color: #6393A7;
-  color: #fff;
+  background-color: #cceeff;
+  color: black;
+  border: 1px groove black;
 }
 
 .today-reminder .reminder-title {
@@ -17697,11 +17698,11 @@ input.ui-editRangeSlider-inputValue {
   top: 5px;
   right: -15px;
   font-size: 12em;
-  -webkit-animation: ring 8s .5s ease-in-out 3;
+  -webkit-animation: ring 8s .5s ease-in-out 2;
   -webkit-transform-origin: 50% 4px;
-  -moz-animation: ring 8s .5s ease-in-out 3;
+  -moz-animation: ring 8s .5s ease-in-out 2;
   -moz-transform-origin: 50% 4px;
-  animation: ring 8s .5s ease-in-out 3;
+  animation: ring 8s .5s ease-in-out 2;
   transform-origin: 50% 4px;
 }
 .today-reminder > .btn-group {

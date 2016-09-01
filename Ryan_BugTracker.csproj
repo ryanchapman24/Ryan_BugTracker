@@ -229,6 +229,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserListModels.cs" />
     <Compile Include="Models\AdminUserViewModels.cs" />
+    <Compile Include="Models\Code First\Notification.cs" />
     <Compile Include="Models\Code First\Project.cs" />
     <Compile Include="Models\Code First\TicketAttachment.cs" />
     <Compile Include="Models\Code First\TicketComment.cs" />
@@ -252,6 +253,7 @@
   <ItemGroup>
     <Content Include="assets\audio\bell-ringing.mp3" />
     <Content Include="assets\audio\flash-message.mp3" />
+    <Content Include="assets\audio\Lightsaber Turn On-SoundBible.com-1637663395.mp3" />
     <Content Include="assets\audio\offline.mp3" />
     <Content Include="assets\css\animate.css" />
     <Content Include="assets\css\bootstrap.css" />
@@ -309,12 +311,14 @@
     <Content Include="assets\img\gallery\lighthouse.jpg" />
     <Content Include="assets\img\gallery\mac.jpg" />
     <Content Include="assets\img\gritter.png" />
+    <Content Include="assets\img\html5-css3-js_juntos-300x300.png" />
     <Content Include="assets\img\ie-spacer.gif" />
     <Content Include="assets\img\kingadmin-logo-white.png" />
     <Content Include="assets\img\kingadmin-logo.png" />
     <Content Include="assets\img\loading-white.gif" />
     <Content Include="assets\img\loading.gif" />
     <Content Include="assets\img\location-pin.png" />
+    <Content Include="assets\img\Net_MVC.jpg" />
     <Content Include="assets\img\profile-avatar.png" />
     <Content Include="assets\img\RyanChapman_Evolv3.png" />
     <Content Include="assets\img\RyanChapman_Evolv3_2.png" />
@@ -325,6 +329,7 @@
     <Content Include="assets\img\search-result-img.png" />
     <Content Include="assets\img\select2-spinner-white.gif" />
     <Content Include="assets\img\select2-spinner.gif" />
+    <Content Include="assets\img\SQL.jpg" />
     <Content Include="assets\img\triangular.png" />
     <Content Include="assets\img\user-avatar.png" />
     <Content Include="assets\img\user1.png" />
@@ -332,8 +337,10 @@
     <Content Include="assets\img\user3.png" />
     <Content Include="assets\img\user4.png" />
     <Content Include="assets\img\user5.png" />
+    <Content Include="assets\img\Visual_Studio.png" />
     <Content Include="assets\js\bootstrap\bootstrap.js" />
     <Content Include="assets\js\bootstrap\bootstrap.min.js" />
+    <Content Include="assets\js\custom.js" />
     <Content Include="assets\js\jquery-ui\jquery-ui-1.10.4.custom.js" />
     <Content Include="assets\js\jquery-ui\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="assets\js\jquery\jquery-2.1.0.js" />
@@ -517,6 +524,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="ProfilePics\JonSnow.jpeg" />
+    <Content Include="ProfilePics\jonsnow1.jpg" />
+    <Content Include="ProfilePics\Riddick.jpg" />
     <Content Include="Scripts\jquery-ui-1.9.0.js" />
     <Content Include="Scripts\jquery-ui-1.9.0.min.js" />
     <Content Include="Scripts\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
@@ -657,7 +667,22 @@
     <Content Include="assets\js\plugins\tree\tree-application.json" />
     <Content Include="assets\js\plugins\tree\tree-default.json" />
     <Content Include="assets\js\plugins\tree\tree-filesystem.json" />
+    <Content Include="TicketAttachments\50\1 - C# %281%29.pptx" />
+    <Content Include="TicketAttachments\54\3 - SQL.pptx" />
     <None Include="Views\Home\Error.cshtml" />
+    <Content Include="TicketAttachments\50\12053180_10153710516487502_1641589672_n.jpg" />
+    <Content Include="TicketAttachments\50\12064412_10153710516607502_1839379629_n.jpg" />
+    <Content Include="TicketAttachments\50\12071350_10153710516247502_1535819061_n.jpg" />
+    <Content Include="TicketAttachments\51\12053180_10153710516487502_1641589672_n.jpg" />
+    <Content Include="TicketAttachments\51\12080812_10153710516167502_2078495687_n.jpg" />
+    <Content Include="TicketAttachments\54\12063980_10153710516062502_1084697891_n.jpg" />
+    <Content Include="TicketAttachments\54\12064412_10153710516607502_1839379629_n.jpg" />
+    <Content Include="TicketAttachments\54\12077354_10153710516377502_1787288168_n.jpg" />
+    <Content Include="TicketAttachments\55\12077354_10153710516377502_1787288168_n.jpg" />
+    <Content Include="TicketAttachments\58\Palladian-aerial-rendering_123456789123456789123456789123456789.jpg" />
+    <Content Include="TicketAttachments\58\Palladian-aerial-rendering_12345678912345678912345678912345678912345.jpg" />
+    <Content Include="TicketAttachments\61\12053180_10153710516487502_1641589672_n.jpg" />
+    <Content Include="TicketAttachments\65\12053180_10153710516487502_1641589672_n.jpg" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Home\Landing.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -689,7 +714,9 @@
     <Content Include="Template Pages\ui-elements-general.html" />
     <Content Include="Template Pages\ui-elements-icons.html" />
     <Content Include="Template Pages\ui-elements-tabs.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -736,7 +763,6 @@
     <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
-    <Content Include="Views\Admin\EditUserAssignments.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Tickets\Create.cshtml" />
     <Content Include="Views\Tickets\Delete.cshtml" />
@@ -754,8 +780,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="misc\css\" />
     <Folder Include="misc\js\" />
-    <Folder Include="ProfilePics\" />
-    <Folder Include="TicketAttachments\" />
+    <Folder Include="TicketAttachments\56\" />
+    <Folder Include="TicketAttachments\57\" />
+    <Folder Include="TicketAttachments\60\" />
+    <Folder Include="TicketAttachments\62\" />
+    <Folder Include="TicketAttachments\63\" />
+    <Folder Include="TicketAttachments\64\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -206,6 +206,8 @@ namespace Ryan_BugTracker.Controllers
 
             var project = db.Projects.Find(model.Project.Id);
             ProjectAssignmentsHelper helper = new ProjectAssignmentsHelper(db);
+            project.Updated = System.DateTime.Now;
+            db.Entry(project).Property("Updated").IsModified = true;
 
             foreach (var user in db.Users.Select(u => u.Id).ToList())
             {
@@ -226,6 +228,7 @@ namespace Ryan_BugTracker.Controllers
             {
                 return RedirectToAction("ProjectList", "Projects");
             }
+
         }
     }
 }
