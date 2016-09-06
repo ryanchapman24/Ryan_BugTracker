@@ -36,35 +36,35 @@
     <!-- WRAPPER -->
     <div class="wrapper">
         <!-- TOP BAR -->
-        <div class="top-bar navbar-fixed-top" style="padding-bottom: 6px">
+        <div class="top-bar navbar-fixed-top" style="padding-bottom: 18px">
             <div class="container">
                 <div class="row">
                     <!-- logo -->
-                    <div class="col-md-2 logo">
-                        <a href="@Url.Action("Index", "Home")"><img src="~/assets/img/RyanChapman_Evolv3_2.png" alt="KingAdmin - Admin Dashboard" /></a>
+                    <div class="col-md-2 logo" style="text-align: center">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/assets/img/AnomalySquared-Logo-Dark-BG.png" style="width: 160px"/></a>
                     </div>
                     <!-- end logo -->
                     <div class="col-md-10">
                         <div class="row">
                             <div class="col-md-3">
                                 <!-- search box -->
-                                <div id="tour-searchbox" class="input-group searchbox" style="padding-bottom: 6px">
+                                @*<div id="tour-searchbox" class="input-group searchbox">
                                     <input type="search" class="form-control" placeholder="enter keyword here...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                                     </span>
-                                </div>
+                                </div>*@
                                 <!-- end search box -->
                             </div>
                             <div class="col-md-9">
-                                <div class="top-bar-right">
+                                <div class="top-bar-right" style="margin-top: 20px">
                                     <button type="button" id="global-volume" class="btn btn-link btn-global-volume" style="margin-top: -4px"><i class="fa"></i></button>
                                     <!-- responsive menu bar icon -->
                                     <a href="#" class="hidden-md hidden-lg main-nav-toggle"><i class="fa fa-bars"></i></a>
                                     <!-- end responsive menu bar icon -->
-                                    <a href="javascript:history.go(-1)" class=""><i class="fa fa-chevron-left" style="color: white; padding-top: 10px; padding-right: 10px; padding-left: 60px"></i></a>
-                                    <a href="javascript:history.go(+1)" class=""><i class="fa fa-chevron-right" style="color: white; padding-top: 10px; padding-right: 10px"></i></a>
-                                    <a href="javascript:history.go(0)" class=""><i class="fa fa-refresh" style="color: white; padding-top: 10px; padding-right: 10px"></i></a>
+                                    <a href="javascript:history.go(-1)" class=""><i class="fa fa-chevron-left" style="color: white; padding-right: 10px; padding-left: 60px"></i></a>
+                                    <a href="javascript:history.go(+1)" class=""><i class="fa fa-chevron-right" style="color: white; padding-right: 10px"></i></a>
+                                    <a href="javascript:history.go(0)" class=""><i class="fa fa-refresh" style="color: white; padding-right: 10px"></i></a>
                                     @*<button type="button" id="start-tour" class="btn btn-link"><i class="fa fa-refresh"></i> Start Tour</button>*@
                                     @if (Request.IsAuthenticated)
                                     {
@@ -165,7 +165,7 @@
                                                             <i class="fa fa-bell"></i>@if (ViewBag.Notifications.Count != 0)
                                                             {<span class="count"><strong>@ViewBag.Notifications.Count</strong></span><span class="circle"></span>}
                                                         </a>
-                                                        <ul class="dropdown-menu pre-scrollable" role="menu" style="overflow-y:auto; margin-top: 3px; max-height: 400px">
+                                                        <ul class="dropdown-menu pre-scrollable" role="menu" style="overflow-y:auto; margin-top: 15px; max-height: 400px">
                                                             <li class="notification-header">
                                                                 @if (ViewBag.Notifications.Count == 0)
                                                                 {
@@ -192,7 +192,7 @@
                                                                         <a href="@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-ticket" style="color: #E60404"></i>                                                                               
                                                                             <span class="text"><small>@notification.Description</small></span>                                                                        
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("d")</span>                                                 
+                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>                                                 
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -203,7 +203,7 @@
                                                                         <a href="@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-edit yellow-font"></i>
                                                                             <span class="text"><small>@notification.Description</small></span>
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("d")</span>                                                 
+                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>                                                 
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -214,7 +214,7 @@
                                                                         <a href = "@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-comment green-font"></i>
                                                                             <span class="text"><small>@notification.Description</small></span>
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("d")</span>                                                 
+                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>                                                 
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -225,7 +225,7 @@
                                                                         <a href="@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-file-text-o" style="color: blue"></i>
                                                                             <span class="text"><small>@notification.Description</small></span>
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("d")</span>
+                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -270,7 +270,7 @@
                             <ul class="main-menu">
                                 <li class="">
                                     <a href="@Url.Action("Index", "Home")" class="">
-                                        <i class="fa fa-fire fa-fw"></i><span class="text">Dashboard</span>
+                                        <i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span>
                                         @*<i class="toggle-icon fa fa-angle-down"></i>*@
                                     </a>
                                 </li>
@@ -421,10 +421,10 @@
                                 <div class="panel-heading">
                                     <h5><i class="fa fa-lightbulb-o"></i> Tips</h5>
                                 </div>
-                                <div class="panel-body" style="background-color: #cceeff">
-                                    <p>In order to create a ticket, you must first be assigned to a project.  From there, go to your "Projects" tab and create a ticket via the action column in the projects table.</p><hr />
-                                    <p>The tickets table on your home page will become highly populated over time.  It is easily sortable via the search bar in the upper right corner of the table.  Just type in whatever you want to search for and each column will be sorted through to find your desired result!</p><hr />
-                                    <p>If you need to update your account information, just click your name on the right side of the navigation bar - then click "Settings."  You can also change your account information from your profile page.
+                                <div class="panel-body" style="background-color: #29AAE3; color: white">
+                                    <p>In order to create a ticket, you must first be assigned to a project.  From there, go to your "Projects" tab and create a ticket via the action column in the projects table.</p><hr style="border-top-color: white"/>
+                                    <p>The tickets table on your home page will become highly populated over time.  It is easily sortable via the search bar in the upper right corner of the table.  Just type in whatever you want to search for and each column will be sorted through to find your desired result!</p><hr style="border-top-color: white"/>
+                                    <p>If you need to update your account information, just click your name on the right side of the navigation bar - then click "Settings."  You can also change your account information from your profile page.</p>
                                 </div>
                             </div>
                             @*<h5 class="label label-default"><i class="fa fa-info-circle"></i> Server Info</h5>*@
@@ -481,7 +481,7 @@
                     </div>
                     <!-- end left sidebar -->
                     <!-- main -->
-                    <div class="col-md-10 content-wrapper" style="padding-top: 30px; min-height: 900px">
+                    <div class="col-md-10 content-wrapper" style="padding-top: 30px; min-height: 1500px">
                         @RenderBody()
                     </div>
                     <!-- /main -->
@@ -495,7 +495,7 @@
     <!-- /wrapper -->
     <!-- FOOTER -->
     <footer class="footer">
-        &copy; Ryan Chapman | Bug Tracker
+        <strong>&copy; Anomaly Squared | @DateTime.Now.Year</strong>
     </footer>
     <!-- END FOOTER -->
     <!-- Javascript -->
@@ -519,13 +519,21 @@
     <script src="~/assets/js/king-chart-stat.js"></script>
     <script src="~/assets/js/king-table.js"></script>
     <script src="~/assets/js/king-components.js"></script>
-    @RenderSection("scripts", required: false)
     <script src="~/Multiselect PlugIn/js/jquery.multi-select.js"></script>
     <script src="~/Multiselect PlugIn/js/jquery.quicksearch.js"></script>
     <script src="~/Scripts/MultiSelect.js"></script>
     <script src="~/assets/js/plugins/dropzone/dropzone.js"></script>
     <script src="~/assets/js/king-elements.js"></script>
     <script src="~/assets/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('#custom-headers').multiSelect({
+                selectableHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>Available Roles</strong></div>",
+                selectionHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>User Roles</strong></div>"
+            });
+        });
+    </script> 
 </body>
 
 </html>

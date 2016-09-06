@@ -288,6 +288,7 @@
     <Content Include="assets\ico\kingadmin-favicon72x72.png" />
     <Content Include="assets\ico\R.png" />
     <Content Include="assets\ico\RyanChapman_Evolv3_Favicon.png" />
+    <Content Include="assets\img\AnomalySquared-Logo-Dark-BG.png" />
     <Content Include="assets\img\AS_logo.png" />
     <Content Include="assets\img\black-linen.png" />
     <Content Include="assets\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -748,13 +749,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\EditUserRoles.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Manage\UpdateInformation.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
-    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\ProjectList.cshtml" />
     <Content Include="Views\Projects\EditProjectAssignments.cshtml" />
     <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
@@ -765,7 +764,6 @@
     <Content Include="Views\Tickets\Delete.cshtml" />
     <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
-    <Content Include="Views\Tickets\Index.cshtml" />
     <Content Include="Views\Tickets\EditTicketAssignments.cshtml" />
     <Content Include="Views\Shared\_RyanLayout.cshtml" />
     <Content Include="Views\Tickets\EditComment.cshtml" />

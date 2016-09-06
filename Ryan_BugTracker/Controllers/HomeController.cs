@@ -71,17 +71,17 @@ namespace Ryan_BugTracker.Controllers
 
             if (User.IsInRole("Administrator"))
             {
-                ViewBag.tickets = db.Tickets.ToList();
+                ViewBag.tickets = db.Tickets.OrderByDescending(t => t.Created).ToList();
             }
             else if(User.IsInRole("Project Manager") || User.IsInRole("Developer"))
             {
                 var userTickets = db.Tickets.Where(t => t.AssignedToUserId.Equals(uId) || t.AuthorUserId.Equals(uId)).ToList();
                 var projectTickets = user.Projects.SelectMany(p => p.Tickets).ToList();
-                ViewBag.tickets = userTickets.Union(projectTickets).ToList();
+                ViewBag.tickets = userTickets.Union(projectTickets).OrderByDescending(t => t.Created).ToList();
             }
             else
             { 
-                ViewBag.tickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).ToList();
+                ViewBag.tickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).OrderByDescending(t => t.Created).ToList();
             }
 
             return View(db.Projects.ToList());

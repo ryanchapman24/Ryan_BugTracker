@@ -8,7 +8,7 @@
 <div class="wrapper full-page-wrapper page-auth page-register text-center">
     <div class="inner-page" style="margin-top: -30px">
         <div class="logo">
-            <img style="margin-left: -20px" src="~/assets/img/RyanChapman_Evolv3_Bigger.png" alt="" />
+            <img style="width: 400px" src="~/assets/img/AnomalySquared-Logo-Dark-BG.png" alt="" />
         </div>
         <div style="margin-top: -15px" class="register-box center-block">
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
@@ -16,7 +16,7 @@
                 @Html.AntiForgeryToken()
                 <form>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <p class="title">Create Your Account</p>
+                    <p class="title" style="text-align: center">REGISTER NEW USER</p>
                         @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "first name" })
                         @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
@@ -30,16 +30,19 @@
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "confirm password" })
                     <input name="image" type="file" class="form-control" id="fileUpload" />
                         @Html.ValidationMessageFor(model => model.ProfilePic, "", new { @class = "text-danger" })
-                    <label class="fancy-checkbox">
+                    @*<label class="fancy-checkbox">
                         <input type="checkbox">
                         <span>I accept the <a href="#">Terms &amp; Agreements</a></span>
-                    </label>
-                    <button class="btn btn-custom-primary btn-lg btn-block btn-auth"><i class="fa fa-check-circle"></i> Create Account</button>
+                    </label>*@
+                    <button class="btn btn-custom-primary btn-lg btn-block btn-auth"><i class="fa fa-check-circle"></i> Register</button>
                 </form>
+                <div class="links">
+                    <p>@Html.ActionLink("Back to login", "Login")</p>
+                </div>
             }
         </div>
-        <div class="separator"><span>OR</span></div>
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        @*<div class="separator"><span>OR</span></div>
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })*@
     </div>
 </div>
 

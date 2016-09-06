@@ -14710,7 +14710,7 @@ body {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  color: #555;
+  color: #031B25;
   background: #ececec;
 }
 
@@ -14884,7 +14884,7 @@ input {
 /*------------------------------------------------*/
 .top-bar {
   padding: 5px 0;
-  background-color: #555;
+  background-color: #031B25;
 }
 .top-bar .logo {
   position: relative;
@@ -15157,11 +15157,11 @@ input {
   border-top: none;
 }
 .top-bar .logged-user .dropdown-menu > li > a {
-  color: #555;
+  color: #031B25;
   font-size: 0.9em;
 }
 .top-bar.navbar-fixed-top + .bottom {
-  margin-top: 44px;
+  margin-top: 70px;
 }
 @media screen and (max-width: 991px) {
   .top-bar.navbar-fixed-top + .bottom {
@@ -15209,7 +15209,7 @@ ul.main-menu > li a {
   display: block;
   position: relative;
   padding: 10px 0 10px 15px;
-  color: #555;
+  color: #031B25;
   background-color: #ececec;
   border-top: 1px solid #dfdfdf;
   text-decoration: none;
@@ -16464,13 +16464,13 @@ fieldset {
 
 .btn-default {
   color: #fff;
-  background-color: #626262;
-  border-color: #555555;
+  background-color: #29AAE3;
+  border-color: #006bb3;
 }
 .btn-default:hover, .open .dropdown-toggle.btn-default, .btn-default:focus, .btn-default:active, .btn-default.active {
   color: #fff;
-  background-color: #494949;
-  border-color: #555555;
+  background-color: #1a96cb;
+  border-color: #006bb3;
 }
 .btn-default.disabled, .btn-default[disabled], .btn-default.disabled:hover, .open .disabled.dropdown-toggle.btn-default, .btn-default[disabled]:hover, .open [disabled].dropdown-toggle.btn-default, .btn-default.disabled:focus, .btn-default[disabled]:focus, .btn-default.disabled:active, .btn-default[disabled]:active, .btn-default.disabled.active, .btn-default[disabled].active {
   background-color: #7c7c7c;
@@ -16754,13 +16754,13 @@ fieldset[disabled] .btn-default.active {
 
 /* custom buttons */
 .btn-custom-primary {
-  background-color: #E24715;
-  border-color: #cb4013;
+  background-color: #29AAE3;
+  border-color: #006bb3;
   color: #fff;
 }
 .btn-custom-primary:hover, .btn-custom-primary:focus, .btn-custom-primary:active, .btn-custom-primary.active,
 .btn-custom-primary .open .dropdown-toggle.btn-warning {
-  background-color: #d94414;
+  background-color: #1a96cb;
   color: #fff;
 }
 
@@ -16919,7 +16919,7 @@ fieldset[disabled] .btn-default.active {
 }
 
 .label-medium {
-  background-color: #296EAA;
+  background-color: #29AAE3;
 }
 
 .label-high {
@@ -16931,7 +16931,7 @@ fieldset[disabled] .btn-default.active {
 }
 
 .label-emergency {
-  background-color: #E7A13D;
+  background-color: #FE5607;
 }
 
 .label-critical {
@@ -17507,8 +17507,8 @@ input.ui-editRangeSlider-inputValue {
   }
 }
 .nav.nav-tabs-custom-colored > li.active > a, .nav.nav-tabs-custom-colored > li.active > a:hover, .nav.nav-tabs-custom-colored > li.active > a:focus {
-  background-color: #cceeff;
-  color: black;
+  background-color: #29AAE3;
+  color: #031B25;
   cursor: pointer;
 }
 .nav.nav-tabs-custom-colored.nav-tabs-right > li {
@@ -17672,13 +17672,13 @@ input.ui-editRangeSlider-inputValue {
   position: relative;
   overflow: hidden;
   padding: 20px;
-  background-color: #cceeff;
-  color: black;
-  border: 1px groove black;
+  background-color: #29AAE3;
+  color: white;
+  border: 1px groove #031B25;
 }
 
 .today-reminder .reminder-title {
-  border-bottom: 1px solid #a4c0cc;
+  border-bottom: 1px solid white;
   padding-bottom: 5px;
 }
 .today-reminder .reminder-time {
@@ -21117,7 +21117,7 @@ ul.recent-file-list > li {
 .footer {
   color: #fff;
   padding: 10px;
-  background-color: #555;
+  background-color: #031B25;
   font-size: 0.9em;
   text-align: center;
 }

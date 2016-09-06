@@ -17,12 +17,6 @@ namespace Ryan_BugTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //// GET: Projects
-        //public ActionResult Index()
-        //{
-        //    return View(db.Projects.ToList());
-        //}
-
         // GET: Projects
         [Authorize]
         public ActionResult ProjectList()
@@ -33,11 +27,11 @@ namespace Ryan_BugTracker.Controllers
 
             if (User.IsInRole("Administrator"))
             {
-                projects = db.Projects.ToList();
+                projects = db.Projects.OrderByDescending(p => p.Created).ToList();
             }
             else
             {
-                projects = ph.ListUserProjects(User.Identity.GetUserId());
+                projects = ph.ListUserProjects(User.Identity.GetUserId()).OrderByDescending(p => p.Created).ToList();
             }
 
             return View(projects);

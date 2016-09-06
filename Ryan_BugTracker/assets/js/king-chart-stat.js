@@ -24,6 +24,8 @@ $(document).ready(function(){
 		$('.easy-pie-chart.yellow').easyPieChart(cOptions);
 		cOptions.barColor = "#E60404"; // red
 		$('.easy-pie-chart.red').easyPieChart(cOptions);
+		cOptions.barColor = "#29AAE3"; // anomaly
+		$('.easy-pie-chart.anomaly').easyPieChart(cOptions);
 	}
 
 

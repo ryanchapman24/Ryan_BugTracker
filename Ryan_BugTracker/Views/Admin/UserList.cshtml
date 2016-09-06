@@ -4,10 +4,16 @@
     ViewBag.Title = "UserList";
 }
 
+
+<div class="main-header">
+    <h2>ADMINISTRATOR PANEL</h2>
+    <em>Manage your Users</em>
+</div>
+
 <div class="widget widget-table">
     <div class="widget-header">
         <h3>
-            <i class="fa fa-key"></i> Users
+            <i class="fa fa-users"></i> Users
         </h3>
         <div class="btn-group widget-header-toolbar">
             <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
@@ -50,9 +56,9 @@
                                 }
                             </td>
                             <td>
-                                @Html.ActionLink("Manage Roles", "EditUserRoles", new { id = item.user.Id }) <br />
-                                @Html.ActionLink("Profile", "ProfilePage", "Home", new { id = item.user.Id }, null) <br />
-                                @Html.ActionLink("Delete", "Delete", new { id = item.user.Id }) <br />
+                                <a href="@Url.Action("EditUserRoles", new { id = item.user.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Manage Roles</a><br />
+                                <a href="@Url.Action("ProfilePage", "Home", new { id = item.user.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Profile</a><br />
+                                @*@Html.ActionLink("Delete", "Delete", new { id = item.user.Id }) <br />*@
                             </td>
                         </tr>
                     }

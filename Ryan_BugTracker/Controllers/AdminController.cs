@@ -14,13 +14,6 @@ namespace Ryan_BugTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Admin
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         // GET: Admin/UserList
         [Authorize(Roles = "Administrator")]
         public ActionResult UserList()
@@ -82,33 +75,33 @@ namespace Ryan_BugTracker.Controllers
             }
         }
 
-        // GET: Admin/Delete/5
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
+        //// GET: Admin/Delete/5
+        //[Authorize(Roles = "Administrator")]
+        //public ActionResult Delete(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ApplicationUser user = db.Users.Find(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
 
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            ApplicationUser user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("UserList");
-        }
+        //// POST: Admin/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Administrator")]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    ApplicationUser user = db.Users.Find(id);
+        //    db.Users.Remove(user);
+        //    db.SaveChanges();
+        //    return RedirectToAction("UserList");
+        //}
 
         protected override void Dispose(bool disposing)
         {

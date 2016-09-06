@@ -8,7 +8,7 @@
 <div class="wrapper full-page-wrapper page-auth page-login text-center">
     <div class="inner-page" style="margin-top: -30px">
         <div class="logo">
-            <img style="margin-left: -20px" src="~/assets/img/RyanChapman_Evolv3_Bigger.png" alt="" />
+            <img style="width: 400px" src="~/assets/img/AnomalySquared-Logo-Dark-BG.png" alt="" />
         </div>
         @if (Request.IsAuthenticated)
         {
@@ -19,7 +19,7 @@
             {
             @Html.AntiForgeryToken()
             <form class="form-horizontal" role="form">
-                <p class="title">Use your email</p>               
+                <p class="title" style="text-align: center">PLEASE SIGN IN</p>               
                 <div class="form-group">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <label for="username" class="control-label sr-only">Username</label>
@@ -41,18 +41,18 @@
                         </div>
                     </div>
                 </div>
-                <label class="fancy-checkbox">
+                @*<label class="fancy-checkbox">
                     <input type="checkbox">
                     <span>Remember me next time</span>
-                </label>
+                </label>*@
                 <button class="btn btn-custom-primary btn-lg btn-block btn-auth"><i class="fa fa-arrow-circle-o-right"></i> Login</button>
             </form>
             <div class="links">
                 <p>@Html.ActionLink("Forgot your password?", "ForgotPassword")</p>
-                <p>@Html.ActionLink("Register as a new user", "Register")</p>
+                <p>@Html.ActionLink("Register new user", "Register")</p>
             </div>
             }
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @*@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
 
@@ -95,10 +95,10 @@
                 <div class="loginbox-submit">
                     <input type="submit" value="SUBMITTER DEMO" class="btn btn-primary btn-block" style="margin-top: 5px" />
                 </div>
-            }
+            }*@
         </div>
-        <div class="separator"><span>OR</span></div>
-        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        @*<div class="separator"><span>OR</span></div>
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })*@
     </div>
 </div>
 

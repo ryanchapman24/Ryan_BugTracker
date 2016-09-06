@@ -20,16 +20,6 @@ namespace Ryan_BugTracker.Migrations
             var roleManager = new RoleManager<IdentityRole>(
                 new RoleStore<IdentityRole>(context));
 
-            if (!context.Roles.Any(r => r.Name == "God Mode"))
-            {
-                roleManager.Create(new IdentityRole { Name = "God Mode" });
-            }
-
-            if (!context.Roles.Any(r => r.Name == "Super"))
-            {
-                roleManager.Create(new IdentityRole { Name = "Super" });
-            }
-
             if (!context.Roles.Any(r => r.Name == "Administrator"))
             {
                 roleManager.Create(new IdentityRole { Name = "Administrator" });
@@ -57,8 +47,8 @@ namespace Ryan_BugTracker.Migrations
             {
                 userManager.Create(new ApplicationUser
                 {
-                    UserName = "chapman.ryansadler@gmail.com",
-                    Email = "chapman.ryansadler@gmail.com",
+                    UserName = "rchapman@anomalysquared.com",
+                    Email = "rchapman@anomalysquared.com",
                     FirstName = "Ryan",
                     LastName = "Chapman",
                     DisplayName = "Ryan Chapman",
@@ -66,9 +56,7 @@ namespace Ryan_BugTracker.Migrations
                 }, "Chappy24!");
             }
 
-            var userId_Super = userManager.FindByEmail("chapman.ryansadler@gmail.com").Id;
-            userManager.AddToRole(userId_Super, "God Mode");
-            userManager.AddToRole(userId_Super, "Super");
+            var userId_Super = userManager.FindByEmail("rchapman@anomalysquared.com").Id;
             userManager.AddToRole(userId_Super, "Administrator");
             userManager.AddToRole(userId_Super, "Project Manager");
             userManager.AddToRole(userId_Super, "Developer");
@@ -88,7 +76,6 @@ namespace Ryan_BugTracker.Migrations
             }
 
             var userId_Guest = userManager.FindByEmail("guest@bugtracker.com").Id;
-            userManager.AddToRole(userId_Guest, "Super");
             userManager.AddToRole(userId_Guest, "Administrator");
             userManager.AddToRole(userId_Guest, "Project Manager");
             userManager.AddToRole(userId_Guest, "Developer");

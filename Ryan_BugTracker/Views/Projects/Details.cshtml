@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Model.Created.ToString("d")
+            @Model.Created.ToString("g")
         </dd>
 
         <dt>
@@ -25,7 +25,7 @@
         <dd>
         @if (Model.Updated.HasValue)
         {
-            @Model.Updated.Value.ToString("d")
+            @Model.Updated.Value.ToString("g")
         }
         </dd>
 
