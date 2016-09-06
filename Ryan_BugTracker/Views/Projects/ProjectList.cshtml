@@ -46,7 +46,7 @@
                         <tr style="font-size: 10px">
                             <td>
                                 @item.Created.ToString("g")
-                                <p style="font-size: 10px">by <span style="color: #428BCA"><em>@item.AuthorUserId</em></span></p>
+                                <p style="font-size: 10px">by <span style="color: #29AAE3"><em><strong>@item.AuthorUserId</strong></em></span></p>
                             </td>
                             <td>
                                 @if (item.Updated.HasValue)
@@ -67,22 +67,22 @@
                                 @Html.DisplayFor(modelItem => item.Tickets.Count)
                             </td>
                             <td>
-                                @Html.ActionLink("Create Ticket", "Create", "Tickets", new { id = item.Id }, null) <br />
+                                <a href="@Url.Action("Create", "Tickets", new { id = item.Id }, null)"><i class="fa fa-ticket" style="margin-right: 3px; font-size: 16px"></i> Create Ticket</a><br />
 
                                 @if (User.IsInRole("Administrator"))
                                 {
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <br />
+                                    <a href="@Url.Action("Edit", new { id = item.Id })"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
                                 }
 
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) <br />
+                                <a href="@Url.Action("Details", new { id = item.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
 
                                 @if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
                                 {
-                                    @Html.ActionLink("Assign", "EditProjectAssignments", new { id = item.Id }) <br />
+                                    <a href="@Url.Action("EditProjectAssignments", new { id = item.Id })"><i class="fa fa-user-plus" style="margin-right: 3px; font-size: 16px"></i> Assign</a><br />
                                 }
                                 @if (User.IsInRole("Administrator"))
                                 {
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }) <br />
+                                    <a href="@Url.Action("Delete", new { id = item.Id })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
                                 }
                             </td>
                         </tr>

@@ -263,17 +263,17 @@
 
                                         if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Developer") && au))
                                         {
-                                            @Html.ActionLink("Edit", "Edit", "Tickets", new { id = nextTicket.Id }, null) <br />
+                                            <a href="@Url.Action("Edit", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
                                         }
                                     }
-                                        @if (User.IsInRole("Administrator"))
-                                        {
-                                            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = nextTicket.Id }, null) <br />
-                                        }
-                                            @Html.ActionLink("Details", "Details", "Tickets", new { id = nextTicket.Id }, null) <br />
+                                            <a href="@Url.Action("Details", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />                                      
                                         @if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
                                         {
-                                            @Html.ActionLink("Assign", "EditTicketAssignments", "Tickets", new { id = nextTicket.Id }, null) <br />
+                                            <a href="@Url.Action("EditTicketAssignments", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-user-plus" style="margin-right: 3px; font-size: 16px"></i> Assign</a><br />
+                                        }
+                                        @if (User.IsInRole("Administrator"))
+                                        {
+                                            <a href="@Url.Action("Delete", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
                                         }
                                 </td>
                             </tr>

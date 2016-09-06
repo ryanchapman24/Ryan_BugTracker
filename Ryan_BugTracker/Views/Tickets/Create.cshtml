@@ -6,7 +6,7 @@
 
 <h2>Create Ticket</h2>
 <hr />
-<strong>Project: </strong>@ViewBag.ProjectName
+<h4 style="color: #29AAE3"><strong style="color: #031B25; font-size: 13px">PROJECT: </strong>@ViewBag.ProjectName</h4>
 
 @using (Html.BeginForm("Create", "Tickets", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
