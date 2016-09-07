@@ -312,7 +312,7 @@ namespace Ryan_BugTracker.Controllers
                 pPic = "/ProfilePics/" + fileName;
             }
 
-            var defaultMedia = "/assets/img/RyanChapman_gemRedLarge.png";
+            var defaultMedia = "/assets/img/AS_logo.png";
             if (String.IsNullOrWhiteSpace(user.ProfilePic))
             {
                 pPic = defaultMedia;

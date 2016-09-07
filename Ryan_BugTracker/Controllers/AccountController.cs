@@ -156,7 +156,7 @@ namespace Ryan_BugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                var pPic = "/assets/img/RyanChapman_gemRedLarge.png";
+                var pPic = "/assets/img/AS_logo.png";
 
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {

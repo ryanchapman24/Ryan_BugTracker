@@ -9,20 +9,19 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ProfilePic)
-    <h4>Update Information Form</h4>
     <hr />
 
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
@@ -36,14 +35,14 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-2 control-label">Profile Picture</div>
-        <div class="col-md-10">
+        <div class="col-md-4">
             <input name="image" type="file" class="form-control" id="fileUpload" />          
             <div id="fileDisplay" style="max-width: 180px">
             @if (Model.ProfilePic != null)
@@ -57,7 +56,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Update" class="btn btn-default" />
-            <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #E60404"><i class="fa fa-arrow-left"></i> Cancel</a>
+            <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #031B25; border-color: #000000"><i class="fa fa-arrow-left"></i> Cancel</a>
         </div>
     </div>
 }

@@ -129,7 +129,7 @@
                             @foreach (var attachment in Model.TicketAttachments.Reverse())
                             {
                                 var fileDl = "/TicketAttachments/" + attachment.TicketId + "/" + attachment.FileUrl;
-                                <img src="/assets/img/Document.png" /><a href="@fileDl">@attachment.FileUrl</a> if (User.IsInRole("Administrator")){ <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id, ticketid = Model.Id })"><img style="width: 10px; margin-left: 10px" src="/assets/ico/delete1.ico" /></a> }<p style="font-size: 10px; margin-bottom: 20px; margin-left: 35px"><em>by <span style="color: #428BCA">@attachment.AuthorUser.DisplayName</span> on @attachment.Created.ToString("g")</em></p>
+                                <img src="/assets/img/Document.png" /><a href="@fileDl" target="_blank">@attachment.FileUrl</a> if (User.IsInRole("Administrator")){ <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id, ticketid = Model.Id })"><img style="width: 10px; margin-left: 10px" src="/assets/ico/delete1.ico" /></a> }<p style="font-size: 10px; margin-bottom: 20px; margin-left: 35px"><em>by <span style="color: #29AAE3">@attachment.AuthorUser.DisplayName</span> on @attachment.Created.ToString("g")</em></p>
                             }
                         </dd>
                         <dt>
@@ -274,10 +274,10 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>The ticket @item.Dialogue was changed from <em>"@item.OldValue"</em> to <em>"@item.NewValue"</em>.</p>                      
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -292,14 +292,14 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p><strong>@item.NewValue</strong> is now the @item.Dialogue.</p>
                                 @if (item.OldValue != null)
                                 {
                                 <p>Previously assigned to: <strong>@item.OldValue</strong></p>
                                 }
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -314,11 +314,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>A @item.Dialogue was added to the ticket: </p>
                                 <p><em>"@item.NewValue"</em>.</p>                               
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -333,10 +333,10 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>A @item.Dialogue from <em>"@item.OldValue"</em> to <em>"@item.NewValue"</em>.</p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -351,11 +351,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>A @item.Dialogue was added to the ticket:</p>
                                 <p>@item.NewValue</p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -370,11 +370,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>@item.Dialogue from the ticket:</p>
                                 <p>@item.OldValue</p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -389,11 +389,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #29AAE3; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>@item.Dialogue from the ticket:</p>
                                 <p><em>"@item.OldValue"</em></p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
