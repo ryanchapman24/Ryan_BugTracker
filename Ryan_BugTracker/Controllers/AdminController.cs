@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Ryan_BugTracker.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class AdminController : UserNames
     {
         private ApplicationDbContext db = new ApplicationDbContext();

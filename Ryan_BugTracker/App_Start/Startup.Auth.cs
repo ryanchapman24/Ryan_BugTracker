@@ -51,27 +51,27 @@ namespace Ryan_BugTracker
 
             // Uncomment the following lines to enable logging in with third party login providers
 
-            app.UseLinkedInAuthentication(
-                ClientId = "77ef28x7j7n8o5",
-                ClientSecret = "kwCU0YrlywJEYxAa");
+            //app.UseLinkedInAuthentication(
+            //    ClientId = "77ef28x7j7n8o5",
+            //    ClientSecret = "kwCU0YrlywJEYxAa");
 
-            app.UseMicrosoftAccountAuthentication(
-                clientId: "0000000044187411",
-                clientSecret: "PqWgqVocMFEiNuwEJewHp99BZrioXmiP");
+            //app.UseMicrosoftAccountAuthentication(
+            //    clientId: "0000000044187411",
+            //    clientSecret: "PqWgqVocMFEiNuwEJewHp99BZrioXmiP");
 
-            app.UseTwitterAuthentication(
-               consumerKey: "kwkqhEllX2O5NobQBF387JQyl",
-               consumerSecret: "zgC4tt0IfMHU66GBRkfvC1PINyo052LsQxKRgqVZQVNMT4ehJe");
+            //app.UseTwitterAuthentication(
+            //   consumerKey: "kwkqhEllX2O5NobQBF387JQyl",
+            //   consumerSecret: "zgC4tt0IfMHU66GBRkfvC1PINyo052LsQxKRgqVZQVNMT4ehJe");
 
-            app.UseFacebookAuthentication(
-                appId: "993564077425295",
-                appSecret: "c9585993104b171f162a47c7208a353b");
+            //app.UseFacebookAuthentication(
+            //    appId: "993564077425295",
+            //    appSecret: "c9585993104b171f162a47c7208a353b");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "894203972552-s62idubqfse842uo631mceqd725sc63i.apps.googleusercontent.com",
-                ClientSecret = "vLAnN9GeWrLuJLKF4rTGaihk"
-            });           
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "894203972552-s62idubqfse842uo631mceqd725sc63i.apps.googleusercontent.com",
+            //    ClientSecret = "vLAnN9GeWrLuJLKF4rTGaihk"
+            //});           
         }
     }
 }

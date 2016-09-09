@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Ryan_BugTracker.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class TicketsController : UserNames
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -12,7 +12,7 @@ using Ryan_BugTracker.Models.Helpers;
 
 namespace Ryan_BugTracker.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class ProjectsController : UserNames
     {
         private ApplicationDbContext db = new ApplicationDbContext();

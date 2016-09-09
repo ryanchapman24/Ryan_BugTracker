@@ -15,7 +15,7 @@ using System.IO;
 namespace Ryan_BugTracker.Controllers
 {
     [Authorize]
-    [RequireHttps]
+    //[RequireHttps]
     public class AccountController : UserNames
     {
         private ApplicationSignInManager _signInManager;
