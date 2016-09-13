@@ -63,5 +63,6 @@ namespace Ryan_BugTracker.Models
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<TicketPriority> TicketPriorities { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Client> Clients { get; set; }
     }
 }

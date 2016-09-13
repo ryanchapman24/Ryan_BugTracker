@@ -57,6 +57,9 @@ namespace Ryan_BugTracker.Controllers
         [Authorize(Roles = "Administrator, Project Manager")]
         public ActionResult Create()
         {
+            var clients = db.Clients.Where(c => c.IsActive == true);
+            ViewBag.ClientID = new SelectList(clients, "CustomerID", "CustomerName");
+
             return View();
         }
 
@@ -66,7 +69,7 @@ namespace Ryan_BugTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Project Manager")]
-        public ActionResult Create([Bind(Include = "Id,Created,Updated,Title,Body,AuthorUserId")] Project project)
+        public ActionResult Create([Bind(Include = "Id,Created,Updated,Title,Body,AuthorUserId,ClientId")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -97,6 +100,8 @@ namespace Ryan_BugTracker.Controllers
                 return RedirectToAction("ProjectList");
                 
             }
+            var clients = db.Clients.Where(c => c.IsActive == true);
+            ViewBag.ClientID = new SelectList(clients, "CustomerID", "CustomerName");
 
             return View(project);
         }

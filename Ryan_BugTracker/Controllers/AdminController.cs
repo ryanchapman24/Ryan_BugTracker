@@ -1,7 +1,9 @@
-﻿using Ryan_BugTracker.Models;
+﻿using Microsoft.AspNet.Identity;
+using Ryan_BugTracker.Models;
 using Ryan_BugTracker.Models.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,6 +15,108 @@ namespace Ryan_BugTracker.Controllers
     public class AdminController : UserNames
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Clients/Create
+        [Authorize(Roles = "Administrator")]
+        public ActionResult CreateClient()
+        {
+            return View();
+        }
+
+        // POST: Clients/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateClient([Bind(Include = "Id,Name,IsActive")] Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Clients.Add(client);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(client);
+        }
+
+        // GET: Clients/Edit/5
+        [Authorize(Roles = "Administrator")]
+        public ActionResult EditClient(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Client client = db.Clients.Find(id);
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
+
+        // POST: Clients/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditClient([Bind(Include = "Id,Name,IsActive")] Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(client).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(client);
+        }
+
+        // GET: Clients/Delete/5
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DeleteClient(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Client client = db.Clients.Find(id);
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
+
+        // POST: Clients/Delete/5
+        [Authorize(Roles = "Administrator")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteClientConfirmed(int id)
+        {
+            Client client = db.Clients.Find(id);
+            db.Clients.Remove(client);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // GET: Clients/Details/5
+        [Authorize(Roles = "Administrator")]
+        public ActionResult ClientDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Client client = db.Clients.Find(id);
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
 
         // GET: Admin/UserList
         [Authorize(Roles = "Administrator")]

@@ -23,8 +23,10 @@ namespace Ryan_BugTracker.Models
         [Required]
         public string Body { get; set; }
         public string AuthorUserId { get; set; }
+        public int ClientId { get; set; }
 
-        //public virtual ApplicationUser AuthorUser { get; set; }
+        //public virtual ApplicationUser AuthorUser { get; set; }    
+        public virtual Client Client { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
     }
