@@ -218,7 +218,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
@@ -673,11 +672,9 @@
     <Content Include="TicketAttachments\50\1 - C# %281%29.pptx" />
     <Content Include="TicketAttachments\54\3 - SQL.pptx" />
     <Content Include="Views\Admin\CreateClient.cshtml" />
-    <Content Include="Views\Clients\Create.cshtml" />
-    <Content Include="Views\Clients\Delete.cshtml" />
-    <Content Include="Views\Clients\Details.cshtml" />
-    <Content Include="Views\Clients\Edit.cshtml" />
-    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Admin\DeleteClient.cshtml" />
+    <Content Include="Views\Admin\ClientDetails.cshtml" />
+    <Content Include="Views\Admin\EditClient.cshtml" />
     <None Include="Views\Home\Error.cshtml" />
     <Content Include="TicketAttachments\50\12053180_10153710516487502_1641589672_n.jpg" />
     <Content Include="TicketAttachments\50\12064412_10153710516607502_1839379629_n.jpg" />
