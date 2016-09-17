@@ -33,6 +33,7 @@
                 <tr>
                     <th>Created</th>
                     <th>Updated</th>
+                    <th>Client</th>
                     <th>Name</th>                   
                     <th>Assigned Users</th>
                     <th># Tickets</th>
@@ -54,6 +55,9 @@
                                     @item.Updated.Value.ToString("g")
                                 }
                             </td>
+                            <td>
+                                @item.Client.Name
+                            </td> 
                             <td>
                                 @Html.DisplayFor(modelItem => item.Title)
                             </td>                          

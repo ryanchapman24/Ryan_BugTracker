@@ -58,7 +58,7 @@ namespace Ryan_BugTracker.Controllers
         public ActionResult Create()
         {
             var clients = db.Clients.Where(c => c.IsActive == true);
-            ViewBag.ClientID = new SelectList(clients, "CustomerID", "CustomerName");
+            ViewBag.ClientID = new SelectList(clients, "Id", "Name");
 
             return View();
         }
@@ -101,7 +101,7 @@ namespace Ryan_BugTracker.Controllers
                 
             }
             var clients = db.Clients.Where(c => c.IsActive == true);
-            ViewBag.ClientID = new SelectList(clients, "CustomerID", "CustomerName");
+            ViewBag.ClientID = new SelectList(clients, "Id", "Name");
 
             return View(project);
         }
@@ -119,6 +119,10 @@ namespace Ryan_BugTracker.Controllers
             {
                 return HttpNotFound();
             }
+
+            var clients = db.Clients.Where(c => c.IsActive == true);
+            ViewBag.ClientID = new SelectList(clients, "Id", "Name");
+
             return View(project);
         }
 
@@ -142,6 +146,9 @@ namespace Ryan_BugTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("ProjectList");
             }
+
+            var clients = db.Clients.Where(c => c.IsActive == true);
+            ViewBag.ClientID = new SelectList(clients, "Id", "Name");
             return View(project);
         }
 

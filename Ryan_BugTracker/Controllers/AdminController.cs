@@ -35,7 +35,7 @@ namespace Ryan_BugTracker.Controllers
             {
                 db.Clients.Add(client);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserList");
             }
 
             return View(client);
@@ -69,7 +69,7 @@ namespace Ryan_BugTracker.Controllers
             {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserList");
             }
             return View(client);
         }
@@ -99,7 +99,7 @@ namespace Ryan_BugTracker.Controllers
             Client client = db.Clients.Find(id);
             db.Clients.Remove(client);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("UserList");
         }
 
         // GET: Clients/Details/5
