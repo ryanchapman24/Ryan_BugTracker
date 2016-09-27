@@ -37,6 +37,28 @@ namespace Ryan_BugTracker.Controllers
             return View(projects);
         }
 
+        [Authorize]
+        public ActionResult ClientProjects(int id)
+        {
+            var client = db.Clients.Find(id);
+            ViewBag.ClientName = client.Name;
+            ViewBag.TotalProjects = db.Projects.Where(p => p.ClientId == id).Count();
+
+            ProjectAssignmentsHelper ph = new ProjectAssignmentsHelper(db);
+            IList<Project> projects = new List<Project>();
+
+            if (User.IsInRole("Administrator"))
+            {
+                projects = db.Projects.Where(p => p.ClientId == id).OrderByDescending(p => p.Created).ToList();
+            }
+            else
+            {
+                projects = ph.ListUserProjects(User.Identity.GetUserId()).Where(p => p.ClientId == id).OrderByDescending(p => p.Created).ToList();
+            }
+            
+            return View(projects);
+        }
+
         // GET: Projects/Details/5
         [Authorize(Roles = "Administrator, Project Manager, Developer")]
         public ActionResult Details(int? id)

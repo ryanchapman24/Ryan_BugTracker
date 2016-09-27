@@ -66,25 +66,6 @@ namespace Ryan_BugTracker.Migrations
             {
                 userManager.Create(new ApplicationUser
                 {
-                    UserName = "guest@bugtracker.com",
-                    Email = "guest@bugtracker.com",
-                    FirstName = "Guest",
-                    LastName = "User",
-                    DisplayName = "Super User Demo",
-                    PhoneNumber = "(###) ###-####"
-                }, "Password-1");
-            }
-
-            var userId_Guest = userManager.FindByEmail("guest@bugtracker.com").Id;
-            userManager.AddToRole(userId_Guest, "Administrator");
-            userManager.AddToRole(userId_Guest, "Project Manager");
-            userManager.AddToRole(userId_Guest, "Developer");
-            userManager.AddToRole(userId_Guest, "Submitter");
-
-            if (!context.Users.Any(u => u.Email == "your email address"))
-            {
-                userManager.Create(new ApplicationUser
-                {
                     UserName = "administrator@bugtracker.com",
                     Email = "administrator@bugtracker.com",
                     FirstName = "Admin",

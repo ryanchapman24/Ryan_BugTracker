@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Ryan_BugTracker.Models;
+using Ryan_BugTracker.Models.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,25 +70,46 @@ namespace Ryan_BugTracker.Controllers
             ApplicationUser user = new ApplicationUser();
             user = db.Users.Find(uId);
 
+            //if (User.IsInRole("Administrator"))
+            //{
+            //    ViewBag.OpenTickets = db.Tickets.Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
+            //    ViewBag.ClosedTickets = db.Tickets.Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            //}
+            //else if(User.IsInRole("Project Manager") || User.IsInRole("Developer"))
+            //{
+            //    var userTickets = db.Tickets.Where(t => t.AssignedToUserId.Equals(uId) || t.AuthorUserId.Equals(uId)).ToList();
+            //    var projectTickets = user.Projects.SelectMany(p => p.Tickets).ToList();
+            //    ViewBag.OpenTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
+            //    ViewBag.ClosedTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            //}
+            //else
+            //{ 
+            //    ViewBag.OpenTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
+            //    ViewBag.ClosedTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            //}
+
+            //return View(db.Projects.ToList());
+
+            var clients = db.Clients.Where(c => c.IsActive == true).ToList();
+            var myClients = new List<Client>();
+
             if (User.IsInRole("Administrator"))
             {
-                ViewBag.OpenTickets = db.Tickets.Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
-                ViewBag.ClosedTickets = db.Tickets.Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
-            }
-            else if(User.IsInRole("Project Manager") || User.IsInRole("Developer"))
-            {
-                var userTickets = db.Tickets.Where(t => t.AssignedToUserId.Equals(uId) || t.AuthorUserId.Equals(uId)).ToList();
-                var projectTickets = user.Projects.SelectMany(p => p.Tickets).ToList();
-                ViewBag.OpenTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
-                ViewBag.ClosedTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+                ViewBag.MyClients = clients;
             }
             else
-            { 
-                ViewBag.OpenTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
-                ViewBag.ClosedTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            {
+                foreach (var c in clients)
+                {
+                    if (user.Projects.Any(p => p.ClientId == c.Id))
+                    {
+                        myClients.Add(c);
+                    }
+                }
+                ViewBag.MyClients = myClients;
             }
-
-            return View(db.Projects.ToList());
+                    
+            return View();
         }
 
         [Authorize]

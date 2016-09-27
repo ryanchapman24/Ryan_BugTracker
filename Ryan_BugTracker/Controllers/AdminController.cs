@@ -35,7 +35,7 @@ namespace Ryan_BugTracker.Controllers
             {
                 db.Clients.Add(client);
                 db.SaveChanges();
-                return RedirectToAction("UserList");
+                return RedirectToAction("Index");
             }
 
             return View(client);
@@ -69,7 +69,7 @@ namespace Ryan_BugTracker.Controllers
             {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("UserList");
+                return RedirectToAction("Index");
             }
             return View(client);
         }
@@ -99,7 +99,7 @@ namespace Ryan_BugTracker.Controllers
             Client client = db.Clients.Find(id);
             db.Clients.Remove(client);
             db.SaveChanges();
-            return RedirectToAction("UserList");
+            return RedirectToAction("Index");
         }
 
         // GET: Clients/Details/5
@@ -118,9 +118,9 @@ namespace Ryan_BugTracker.Controllers
             return View(client);
         }
 
-        // GET: Admin/UserList
+        // GET: Admin/Index
         [Authorize(Roles = "Administrator")]
-        public ActionResult UserList()
+        public ActionResult Index()
         {
             List<AdminUserListModels> users = new List<AdminUserListModels>();
             UserRolesHelper helper = new UserRolesHelper(db);
@@ -133,6 +133,7 @@ namespace Ryan_BugTracker.Controllers
 
                 users.Add(eachUser);
             }
+            ViewBag.Clients = db.Clients.OrderBy(c => c.Name).ToList();
             return View(users.OrderBy(u => u.user.LastName).ToList());
         }
 
@@ -171,11 +172,11 @@ namespace Ryan_BugTracker.Controllers
                     helper.AddUserToRole(user.Id, role);
                 }
 
-                return RedirectToAction("UserList", "Admin");
+                return RedirectToAction("Index", "Admin");
             }
             else
             {
-                return RedirectToAction("UserList", "Admin");
+                return RedirectToAction("Index", "Admin");
             }
         }
 
@@ -204,7 +205,7 @@ namespace Ryan_BugTracker.Controllers
         //    ApplicationUser user = db.Users.Find(id);
         //    db.Users.Remove(user);
         //    db.SaveChanges();
-        //    return RedirectToAction("UserList");
+        //    return RedirectToAction("Index");
         //}
 
         protected override void Dispose(bool disposing)

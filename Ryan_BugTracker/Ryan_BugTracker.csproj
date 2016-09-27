@@ -461,6 +461,8 @@
     <Content Include="assets\js\plugins\typeahead\typeaheadjs.1.5.1.js" />
     <Content Include="assets\js\plugins\wizard\wizard.js" />
     <Content Include="assets\js\plugins\wizard\wizard.min.js" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
     <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
     <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
@@ -527,6 +529,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="ProfilePics\JonSnow.jpeg" />
     <Content Include="ProfilePics\jonsnow1.jpg" />
     <Content Include="ProfilePics\Riddick.jpg" />
@@ -558,8 +561,6 @@
     <Content Include="Template Pages\components-tree-view-transparent.html" />
     <Content Include="Template Pages\components-tree-view.html" />
     <Content Include="Template Pages\components-wizard.html" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -578,7 +579,6 @@
     <Content Include="Template Pages\index-transparent.html" />
     <Content Include="Template Pages\index.html" />
     <Content Include="misc\font\fontawesome-webfont.svg" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -632,11 +632,6 @@
     <Content Include="misc\font\fontawesome-webfont.ttf" />
     <Content Include="misc\font\fontawesome-webfont.woff" />
     <Content Include="misc\font\FontAwesome.otf" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Multiselect PlugIn\.gitignore" />
     <Content Include="Multiselect PlugIn\bower.json" />
     <Content Include="Multiselect PlugIn\multi-select.jquery.json" />
@@ -675,6 +670,11 @@
     <Content Include="Views\Admin\DeleteClient.cshtml" />
     <Content Include="Views\Admin\ClientDetails.cshtml" />
     <Content Include="Views\Admin\EditClient.cshtml" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Views\Home\Error.cshtml" />
     <Content Include="TicketAttachments\50\12053180_10153710516487502_1641589672_n.jpg" />
     <Content Include="TicketAttachments\50\12064412_10153710516607502_1839379629_n.jpg" />
@@ -753,7 +753,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\EditUserRoles.cshtml" />
-    <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Manage\UpdateInformation.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Delete.cshtml" />
@@ -776,6 +776,7 @@
     <Content Include="Views\Tickets\DeleteAttachment.cshtml" />
     <Content Include="Views\Home\ProfilePage.cshtml" />
     <Content Include="private.config" />
+    <Content Include="Views\Projects\ClientProjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
