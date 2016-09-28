@@ -72,7 +72,7 @@
     <div class="widget widget-table">
         <div class="widget-header">
             <h3>
-                <i class="fa fa-building"></i> Clients
+                <i class="fa fa-briefcase"></i> Clients
             </h3>
             <div class="btn-group widget-header-toolbar">
                 <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
@@ -101,7 +101,7 @@
                                 </td>
                                 <td>
                                     <a href="@Url.Action("EditClient", new { id = client.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                    <a href="@Url.Action("ClientDetails", "Home", new { id = client.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                    <a href="@Url.Action("ClientDetails", new { id = client.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
                                     <a href="@Url.Action("DeleteClient", new { id = client.Id })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
                                 </td>
                             </tr>
