@@ -146,7 +146,7 @@
                                                 </span>
                                             </div>
                                         </a>
-                                        <p class="text-center"><strong>@client.Name</strong><span class="badge" style="background-color: #29AAE3; margin-left: 5px"><strong>@db.Tickets.Where(t => t.Project.ClientId == client.Id).Count()<i class="fa fa-ticket" style="margin-left: 3px"></i></strong></span></p>
+                                        <p class="text-center"><strong>@client.Name</strong><span class="badge" style="background-color: #29AAE3; margin-left: 5px"><strong>@db.Tickets.Where(t => t.Project.ClientId == client.Id && t.TicketStatusId != 4).Count()<i class="fa fa-ticket" style="margin-left: 3px"></i></strong></span></p>
                                     </div>
                                 }
                             }
@@ -196,225 +196,220 @@
                 <!-- END WIDGET REMINDER -->
             </div>
         </div>
+
         <!-- WIDGET TICKET TABLE -->
         <div class="widget widget-table">
             <div class="widget-header">
                 <h3>
-                    <i class="fa fa-ticket"></i> Open Support Tickets
+                    <i class="fa fa-ticket"></i> Support Tickets
                         @*<span style="padding-left: 10px; font-size: 16px">|</span>
                         <span style="font-size: 12px; padding-left: 10px">To create a ticket, go to your @Html.ActionLink("Projects", "ProjectList", "Projects", null, htmlAttributes: new { style = "font-size: 12px; text-decoration: none" }).</span>*@
                 </h3>
-                <div class="btn-group widget-header-toolbar">
-                    <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
-                    <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
-                </div>
                 @{
-                var crits = (List<Ticket>)ViewBag.OpenTickets;
-                var cCount = crits.Where(c => c.TicketPriority.Name.Equals("Critical")).Count();
+                    var crits = (List<Ticket>)ViewBag.OpenTickets;
+                    var cCount = crits.Where(c => c.TicketPriority.Name.Equals("Critical")).Count();
 
-                if (cCount > 0)
-                {
-                    if (cCount == 1)
+                    if (cCount > 0)
                     {
-                        <div class="widget-header-toolbar">
-                            <div class="label label-critical"><i class="fa fa-warning"></i> @cCount Critical Ticket</div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="widget-header-toolbar">
-                            <div class="label label-critical"><i class="fa fa-warning"></i> @cCount Critical Tickets</div>
-                        </div>
-                    }
-                }
-                }
-            </div>
-            <div class="widget-content">
-                <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable ticketTable">
-                    <thead>
-                        <tr>
-                            <th>Created</th>
-                            <th>Ticket</th>
-                            <th>Author</th>
-                            <th>Client / Project</th>
-                            <th>Type</th>
-                            <th>Priority</th>
-                            <th>Assignment</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{ 
-                            
-                            foreach (var nextTicket in (List<Ticket>)ViewBag.OpenTickets)
-                            {
-                            <tr style="font-size: 10px">
-                                <td>
-                                    @nextTicket.Created.ToString("g")
-                                </td>
-                                <td>
-                                    <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Title)</strong>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => nextTicket.AuthorUser.DisplayName)
-                                </td>
-                                <td>
-                                    <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Project.Client.Name)</strong><br />
-                                    @Html.DisplayFor(modelItem => nextTicket.Project.Title)
-</td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => nextTicket.TicketType.Name)
-                                </td>
-                                <td style="font-size: 12px">
-                                    @if (nextTicket.TicketPriority.Name == "Low")
-                                    {
-                                    <span class="label label-medium">Low</span>
-                                    }
-                                    @if (nextTicket.TicketPriority.Name == "Medium")
-                                    {
-                                    <span class="label label-urgent">Medium</span>
-                                    }
-                                    @if (nextTicket.TicketPriority.Name == "High")
-                                    {
-                                    <span class="label label-emergency">High</span>
-                                    }
-                                    @if (nextTicket.TicketPriority.Name == "Critical")
-                                    {
-                                    <span class="label label-critical">Critical</span>
-                                    }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => nextTicket.AssignedToUser.DisplayName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => nextTicket.TicketStatus.Name)
-                                </td>
-                                <td>
-                                    @{
-                                        var au = false;
-                                        if (nextTicket.AssignedToUserId != null) { au = nextTicket.AssignedToUserId.Equals(User.Identity.GetUserId()); }
-
-                                        if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Developer") && au))
-                                        {
-                                            <a href="@Url.Action("Edit", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                        }
-                                    }
-                                            <a href="@Url.Action("Details", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />                                      
-                                        @if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
-                                        {
-                                            <a href="@Url.Action("EditTicketAssignments", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-user-plus" style="margin-right: 3px; font-size: 16px"></i> Assign</a><br />
-                                        }
-                                        @if (User.IsInRole("Administrator"))
-                                        {
-                                            <a href="@Url.Action("Delete", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
-                                        }
-                                </td>
-                            </tr>
-                            }
+                        if (cCount == 1)
+                        {
+                            <div class="widget-header-toolbar">
+                                <div class="label label-critical"><i class="fa fa-warning"></i> @cCount Critical Ticket Open</div>
+                            </div>
                         }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="widget widget-table">
-            <div class="widget-header">
-                <h3>
-                    <i class="fa fa-ticket"></i> Completed Support Tickets <i class="fa fa-check" style="color: #29AAE3; margin-left: 5px"></i>
-                    @*<span style="padding-left: 20px; font-size: 16px">|</span>
-                    <span style="font-size: 12px; padding-left: 20px">To create a ticket, go to your @Html.ActionLink("Projects", "ProjectList", "Projects", null, htmlAttributes: new { style = "font-size: 12px; text-decoration: none" }).</span>*@
-                </h3>
-                <div class="btn-group widget-header-toolbar">
+                        else
+                        {
+                            <div class="widget-header-toolbar">
+                                <div class="label label-critical"><i class="fa fa-warning"></i> @cCount Critical Tickets Open</div>
+                            </div>
+                        }
+                    }
+                }
+                <div class="btn-group widget-header-toolbar pull-right">
                     <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
                     <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
                 </div>
+                <ul class="nav nav-tabs pull-right">
+                    <li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-wrench"></i> Open</a></li>
+                    <li><a href="#tab2" data-toggle="tab"><i class="fa fa-check"></i> Complete</a></li>
+                </ul>             
             </div>
             <div class="widget-content">
-                <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable ticketTable">
-                    <thead>
-                        <tr>
-                            <th>Created</th>
-                            <th>Ticket</th>
-                            <th>Author</th>
-                            <th>Client / Project</th>
-                            <th>Type</th>
-                            <th>Priority</th>
-                            <th>Assignment</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-
-                            foreach (var nextTicket in (List<Ticket>)ViewBag.ClosedTickets)
-                            {
-                                <tr style="font-size: 10px">
-                                    <td>
-                                        @nextTicket.Created.ToString("g")
-                                    </td>
-                                    <td>
-                                        <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Title)</strong>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => nextTicket.AuthorUser.DisplayName)
-                                    </td>
-                                    <td>
-                                        <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Project.Client.Name)</strong><br />
-                                        @Html.DisplayFor(modelItem => nextTicket.Project.Title)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => nextTicket.TicketType.Name)
-                                    </td>
-                                    <td style="font-size: 12px">
-                                        @if (nextTicket.TicketPriority.Name == "Low")
-                                        {
-                                            <span class="label label-medium">Low</span>
-                                        }
-                                        @if (nextTicket.TicketPriority.Name == "Medium")
-                                        {
-                                            <span class="label label-urgent">Medium</span>
-                                        }
-                                        @if (nextTicket.TicketPriority.Name == "High")
-                                        {
-                                            <span class="label label-emergency">High</span>
-                                        }
-                                        @if (nextTicket.TicketPriority.Name == "Critical")
-                                        {
-                                            <span class="label label-critical">Critical</span>
-                                        }
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => nextTicket.AssignedToUser.DisplayName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => nextTicket.TicketStatus.Name)<i class="fa fa-check" style="color: #29AAE3; margin-left: 5px"></i>
-                                    </td>
-                                    <td>
-                                        @{
-                                            var au = false;
-                                            if (nextTicket.AssignedToUserId != null) { au = nextTicket.AssignedToUserId.Equals(User.Identity.GetUserId()); }
-
-                                            if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Developer") && au))
-                                            {
-                                                <a href="@Url.Action("Edit", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
-                                            }
-                                        }
-                                        <a href="@Url.Action("Details", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
-                                        @if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
-                                        {
-                                            <a href="@Url.Action("EditTicketAssignments", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-user-plus" style="margin-right: 3px; font-size: 16px"></i> Assign</a><br />
-                                        }
-                                        @if (User.IsInRole("Administrator"))
-                                        {
-                                            <a href="@Url.Action("Delete", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
-                                        }
-                                    </td>
+                <div class="tab-content no-padding">
+                    <div class="tab-pane fade in active" id="tab1">
+                        <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable ticketTable">
+                            <thead>
+                                <tr>
+                                    <th>Created</th>
+                                    <th>Ticket</th>
+                                    <th>Author</th>
+                                    <th>Client / Project</th>
+                                    <th>Type</th>
+                                    <th>Priority</th>
+                                    <th>Assignment</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var nextTicket in (List<Ticket>)ViewBag.OpenTickets)
+                                    {
+                                        <tr style="font-size: 10px">
+                                            <td>
+                                                @nextTicket.Created.ToString("g")
+                                            </td>
+                                            <td>
+                                                <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Title)</strong>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.AuthorUser.DisplayName)
+                                            </td>
+                                            <td>
+                                                <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Project.Client.Name)</strong><br />
+                                                @Html.DisplayFor(modelItem => nextTicket.Project.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.TicketType.Name)
+                                            </td>
+                                            <td style="font-size: 12px">
+                                                @if (nextTicket.TicketPriority.Name == "Low")
+                                                {
+                                                    <span class="label label-medium">Low</span>
+                                                }
+                                                @if (nextTicket.TicketPriority.Name == "Medium")
+                                                {
+                                                    <span class="label label-urgent">Medium</span>
+                                                }
+                                                @if (nextTicket.TicketPriority.Name == "High")
+                                                {
+                                                    <span class="label label-emergency">High</span>
+                                                }
+                                                @if (nextTicket.TicketPriority.Name == "Critical")
+                                                {
+                                                    <span class="label label-critical">Critical</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.AssignedToUser.DisplayName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.TicketStatus.Name)
+                                            </td>
+                                            <td>
+                                                @{
+                                                    var au = false;
+                                                    if (nextTicket.AssignedToUserId != null) { au = nextTicket.AssignedToUserId.Equals(User.Identity.GetUserId()); }
+
+                                                    if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Developer") && au))
+                                                    {
+                                                        <a href="@Url.Action("Edit", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    }
+                                                }
+                                                <a href="@Url.Action("Details", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                                @if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
+                                                {
+                                                    <a href="@Url.Action("EditTicketAssignments", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-user-plus" style="margin-right: 3px; font-size: 16px"></i> Assign</a><br />
+                                                }
+                                                @if (User.IsInRole("Administrator"))
+                                                {
+                                                    <a href="@Url.Action("Delete", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="tab2">
+                        <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable ticketTable">
+                            <thead>
+                                <tr>
+                                    <th>Created</th>
+                                    <th>Ticket</th>
+                                    <th>Author</th>
+                                    <th>Client / Project</th>
+                                    <th>Type</th>
+                                    <th>Priority</th>
+                                    <th>Assignment</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var nextTicket in (List<Ticket>)ViewBag.ClosedTickets)
+                                    {
+                                        <tr style="font-size: 10px">
+                                            <td>
+                                                @nextTicket.Created.ToString("g")
+                                            </td>
+                                            <td>
+                                                <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Title)</strong>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.AuthorUser.DisplayName)
+                                            </td>
+                                            <td>
+                                                <strong style="color: #29AAE3">@Html.DisplayFor(modelItem => nextTicket.Project.Client.Name)</strong><br />
+                                                @Html.DisplayFor(modelItem => nextTicket.Project.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.TicketType.Name)
+                                            </td>
+                                            <td style="font-size: 12px">
+                                                @if (nextTicket.TicketPriority.Name == "Low")
+                                                {
+                                                    <span class="label label-medium">Low</span>
+                                                }
+                                                @if (nextTicket.TicketPriority.Name == "Medium")
+                                                {
+                                                    <span class="label label-urgent">Medium</span>
+                                                }
+                                                @if (nextTicket.TicketPriority.Name == "High")
+                                                {
+                                                    <span class="label label-emergency">High</span>
+                                                }
+                                                @if (nextTicket.TicketPriority.Name == "Critical")
+                                                {
+                                                    <span class="label label-critical">Critical</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.AssignedToUser.DisplayName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => nextTicket.TicketStatus.Name)<i class="fa fa-check" style="color: #29AAE3; margin-left: 5px"></i>
+                                            </td>
+                                            <td>
+                                                @{
+                                                    var au = false;
+                                                    if (nextTicket.AssignedToUserId != null) { au = nextTicket.AssignedToUserId.Equals(User.Identity.GetUserId()); }
+
+                                                    if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Developer") && au))
+                                                    {
+                                                        <a href="@Url.Action("Edit", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-edit" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                                    }
+                                                }
+                                                <a href="@Url.Action("Details", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                                @if (User.IsInRole("Administrator") || User.IsInRole("Project Manager"))
+                                                {
+                                                    <a href="@Url.Action("EditTicketAssignments", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-user-plus" style="margin-right: 3px; font-size: 16px"></i> Assign</a><br />
+                                                }
+                                                @if (User.IsInRole("Administrator"))
+                                                {
+                                                    <a href="@Url.Action("Delete", "Tickets", new { id = nextTicket.Id }, null)"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
             </div>
         </div>
 
