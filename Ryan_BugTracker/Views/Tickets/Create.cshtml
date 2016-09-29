@@ -37,7 +37,7 @@
             <div class="control-label col-md-2">
                 <strong>Ticket Name</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
@@ -47,7 +47,7 @@
             <div class="control-label col-md-2">
                 <strong>Description</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <textarea id="Body" class="form-control" name="Body" required data-validation-required-message="This field can't be left blank" rows="3"></textarea>
                 @*@Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
@@ -84,8 +84,8 @@
             <div class="control-label col-md-2">
                 <strong>Type</strong>
             </div>
-            <div class="col-md-10">
-                @Html.DropDownList("TicketTypeId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("TicketTypeId", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                 @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -94,8 +94,8 @@
             <div class="control-label col-md-2">
                 <strong>Priority</strong>
             </div>
-            <div class="col-md-10">
-                @Html.DropDownList("TicketPriorityId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="col-md-4">
+                @Html.DropDownList("TicketPriorityId", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                 @Html.ValidationMessageFor(model => model.TicketPriorityId, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -295,7 +295,13 @@
                                         <i class="fa fa-user-plus fa-fw"></i><span class="text">Profile</span>
                                         @*<i class="toggle-icon fa fa-angle-down"></i>*@
                                     </a>
-                                </li>                                
+                                </li>
+                                <li class="">
+                                    <a href="@Url.Action("Archive", "Home", new { id = User.Identity.GetUserId() })" class="">
+                                        <i class="fa fa-unlock-alt fa-fw"></i><span class="text">Archive</span>
+                                        @*<i class="toggle-icon fa fa-angle-down"></i>*@
+                                    </a>
+                                </li>
                                 @*<li class=""><a href="#" class="js-sub-menu-toggle"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span>
                                         <i class="toggle-icon fa fa-angle-left"></i></a>
                                         <ul class="sub-menu">

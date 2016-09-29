@@ -34,8 +34,8 @@
             <div class="control-label col-md-2">
                 <strong>Client</strong>
             </div>
-            <div class="col-md-10">
-                @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control", required = "true" })
+            <div class="col-md-4">
+                @Html.DropDownList("ClientId", null, "", htmlAttributes: new { @class = "form-control", required = "true" })
                 @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="control-label col-md-2">
                 <strong>Name</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", required = "true" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
@@ -54,7 +54,7 @@
             <div class="control-label col-md-2">
                 <strong>Description</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <textarea id="Body" class="form-control" name="Body" required data-validation-required-message="This field can't be left blank" rows="3"></textarea>
                 @*@Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control", rows = "5", cols = "30"  } })*@
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })

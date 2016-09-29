@@ -70,25 +70,23 @@ namespace Ryan_BugTracker.Controllers
             ApplicationUser user = new ApplicationUser();
             user = db.Users.Find(uId);
 
-            //if (User.IsInRole("Administrator"))
-            //{
-            //    ViewBag.OpenTickets = db.Tickets.Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
-            //    ViewBag.ClosedTickets = db.Tickets.Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
-            //}
-            //else if(User.IsInRole("Project Manager") || User.IsInRole("Developer"))
-            //{
-            //    var userTickets = db.Tickets.Where(t => t.AssignedToUserId.Equals(uId) || t.AuthorUserId.Equals(uId)).ToList();
-            //    var projectTickets = user.Projects.SelectMany(p => p.Tickets).ToList();
-            //    ViewBag.OpenTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
-            //    ViewBag.ClosedTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
-            //}
-            //else
-            //{ 
-            //    ViewBag.OpenTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
-            //    ViewBag.ClosedTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
-            //}
-
-            //return View(db.Projects.ToList());
+            if (User.IsInRole("Administrator"))
+            {
+                ViewBag.OpenTickets = db.Tickets.Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
+                ViewBag.ClosedTickets = db.Tickets.Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            }
+            else if (User.IsInRole("Project Manager") || User.IsInRole("Developer"))
+            {
+                var userTickets = db.Tickets.Where(t => t.AssignedToUserId.Equals(uId) || t.AuthorUserId.Equals(uId)).ToList();
+                var projectTickets = user.Projects.SelectMany(p => p.Tickets).ToList();
+                ViewBag.OpenTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
+                ViewBag.ClosedTickets = userTickets.Union(projectTickets).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            }
+            else
+            {
+                ViewBag.OpenTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId != 4).OrderByDescending(t => t.Created).ToList();
+                ViewBag.ClosedTickets = db.Tickets.Where(t => t.AuthorUserId.Equals(uId)).Where(t => t.TicketStatusId == 4).OrderByDescending(t => t.Created).ToList();
+            }
 
             var clients = db.Clients.Where(c => c.IsActive == true).ToList();
             var myClients = new List<Client>();
@@ -108,8 +106,11 @@ namespace Ryan_BugTracker.Controllers
                 }
                 ViewBag.MyClients = myClients;
             }
+
+            return View(db.Projects.ToList());
+
+            
                     
-            return View();
         }
 
         [Authorize]
