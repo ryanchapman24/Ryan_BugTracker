@@ -18,7 +18,7 @@
             <div class="control-label col-md-2">
                 <strong>Body</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <textarea id="Body" class="form-control" name="Body" required data-validation-required-message="This field can't be left blank" rows="3">@Model.Body</textarea>                
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
