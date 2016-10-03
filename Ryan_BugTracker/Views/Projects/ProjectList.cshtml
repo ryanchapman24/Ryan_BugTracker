@@ -71,7 +71,8 @@
                                 @Html.DisplayFor(modelItem => item.Tickets.Count)
                             </td>
                             <td>
-                                <a href="@Url.Action("Create", "Tickets", new { id = item.Id }, null)"><i class="fa fa-ticket" style="margin-right: 3px; font-size: 16px"></i> Create Ticket</a><br />
+                                <a href="@Url.Action("Create", "Tickets", new { id = item.Id }, null)"><i class="fa fa-plus" style="margin-right: 3px; font-size: 16px"></i> Create Ticket</a><br />
+                                <a href="@Url.Action("ProjectTickets", new { id = item.Id })"><i class="fa fa-ticket" style="margin-right: 3px; font-size: 16px"></i> Project Tickets</a><br />
 
                                 @if (User.IsInRole("Administrator"))
                                 {
@@ -88,6 +89,7 @@
                                 {
                                     <a href="@Url.Action("Delete", new { id = item.Id })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
                                 }
+                                
                             </td>
                         </tr>
                     }

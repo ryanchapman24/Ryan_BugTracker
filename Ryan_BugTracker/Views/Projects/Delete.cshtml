@@ -61,7 +61,8 @@
     </dl>
 
     <div>
-        @Html.ActionLink("Back to List", "ProjectList")
+        @*@Html.ActionLink("Go Back", "Index", "Home")*@
+        <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #031B25; border-color: #000000"><i class="fa fa-arrow-left"></i> Go Back</a>
     </div>
 }
 </div>

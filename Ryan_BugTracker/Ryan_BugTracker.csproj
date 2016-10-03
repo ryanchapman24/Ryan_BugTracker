@@ -777,6 +777,8 @@
     <Content Include="Views\Home\ProfilePage.cshtml" />
     <Content Include="private.config" />
     <Content Include="Views\Projects\ClientProjects.cshtml" />
+    <Content Include="Views\Projects\ProjectTickets.cshtml" />
+    <Content Include="Views\Tickets\MyTickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -786,5 +786,24 @@ namespace Ryan_BugTracker.Controllers
 
             return RedirectToAction("Details", "Tickets", new { id = ticketid });
         }
+
+        [Authorize]
+        public ActionResult MyTickets()
+        {
+            var uId = User.Identity.GetUserId();
+            ApplicationUser user = new ApplicationUser();
+            user = db.Users.Find(uId);
+
+            ViewBag.OpenTicketsAssigned = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+            ViewBag.ClosedTicketsAssigned = db.Tickets.Where(t => t.TicketStatusId == 4 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+
+            ViewBag.OpenTicketsSubmitted = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+            ViewBag.ClosedTicketsSubmitted = db.Tickets.Where(t => t.TicketStatusId == 4 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+
+            ViewBag.AssignedCount = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).Count();
+            ViewBag.SubmittedCount = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).Count();
+
+            return View();
+        }
     }
 }

@@ -107,10 +107,7 @@ namespace Ryan_BugTracker.Controllers
                 ViewBag.MyClients = myClients;
             }
 
-            return View(db.Projects.ToList());
-
-            
-                    
+            return View(db.Projects.ToList());                
         }
 
         [Authorize]
