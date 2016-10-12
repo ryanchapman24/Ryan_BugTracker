@@ -113,7 +113,7 @@
                                 ApplicationUser loggedUser = new ApplicationUser();
                                 loggedUser = db.Users.Find(uId);
 
-                                var clients = db.Clients.Where(c => c.IsActive == true).ToList();
+                                var clients = db.Clients.Where(c => c.IsActive == true).OrderBy(c => c.Name).ToList();
                                 var myClients = new List<Client>();
                                 var clientList = new List<Client>();
 

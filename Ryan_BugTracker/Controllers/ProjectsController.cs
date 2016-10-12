@@ -79,7 +79,7 @@ namespace Ryan_BugTracker.Controllers
         [Authorize(Roles = "Administrator, Project Manager")]
         public ActionResult Create()
         {
-            var clients = db.Clients.Where(c => c.IsActive == true);
+            var clients = db.Clients.Where(c => c.IsActive == true).OrderBy(c => c.Name);
             ViewBag.ClientID = new SelectList(clients, "Id", "Name");
 
             return View();
@@ -122,7 +122,7 @@ namespace Ryan_BugTracker.Controllers
                 return RedirectToAction("ProjectList");
                 
             }
-            var clients = db.Clients.Where(c => c.IsActive == true);
+            var clients = db.Clients.Where(c => c.IsActive == true).OrderBy(c => c.Name);
             ViewBag.ClientID = new SelectList(clients, "Id", "Name");
 
             return View(project);
@@ -220,8 +220,8 @@ namespace Ryan_BugTracker.Controllers
             ProjectAssignmentsHelper helper = new ProjectAssignmentsHelper(db);
             var model = new ProjectUserViewModels();
             model.Project = project;
-            model.SelectedUsers = helper.ListUsersOnProject(id).Select(u => u.Id).ToArray();
-            model.Users = new MultiSelectList(db.Users, "Id", "DisplayName", model.SelectedUsers);
+            model.SelectedUsers = helper.ListUsersOnProject(id).OrderBy(u => u.FirstName).Select(u => u.Id).ToArray();
+            model.Users = new MultiSelectList(db.Users.OrderBy(u => u.FirstName), "Id", "DisplayName", model.SelectedUsers);
 
             return View(model);
         }

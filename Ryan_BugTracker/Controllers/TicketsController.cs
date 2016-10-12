@@ -390,7 +390,7 @@ namespace Ryan_BugTracker.Controllers
 
             var displayUsers = usersInRole.Where(u => u.Projects.Any(p => (p.Title == project.Title)));
 
-            ViewBag.AssignedToUserId = new SelectList(displayUsers, "Id", "DisplayName", ticket.AssignedToUserId);
+            ViewBag.AssignedToUserId = new SelectList(displayUsers.OrderBy(u => u.FirstName), "Id", "DisplayName", ticket.AssignedToUserId);
 
             return View(ticket);
         }
