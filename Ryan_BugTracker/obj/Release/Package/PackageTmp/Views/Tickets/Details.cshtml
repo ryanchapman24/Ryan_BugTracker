@@ -43,7 +43,7 @@
                         </dt>
 
                         <dd>
-                            @Model.Created.ToString("d")
+                            @Model.Created.ToString("g")
                         </dd>
 
                         <dt>
@@ -53,7 +53,7 @@
                         <dd>
                             @if (Model.Updated.HasValue)
                             {
-                                @Model.Updated.Value.ToString("d")
+                                @Model.Updated.Value.ToString("g")
                             }
                         </dd>
 
@@ -129,32 +129,39 @@
                             @foreach (var attachment in Model.TicketAttachments.Reverse())
                             {
                                 var fileDl = "/TicketAttachments/" + attachment.TicketId + "/" + attachment.FileUrl;
-                                <img src="/assets/img/Document.png" /><a href="@fileDl">@attachment.FileUrl</a> if (User.IsInRole("Administrator")){ <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id, ticketid = Model.Id })"><img style="width: 10px; margin-left: 10px" src="/assets/ico/delete1.ico" /></a> }<p style="font-size: 10px; margin-bottom: 20px; margin-left: 35px"><em>by <span style="color: #428BCA">@attachment.AuthorUser.DisplayName</span> on @attachment.Created.ToString("d")</em></p>
+                                <img src="/assets/img/Document.png" /><a href="@fileDl" target="_blank">@attachment.FileUrl</a> if (User.IsInRole("Administrator")){ <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id, ticketid = Model.Id })"><img style="width: 10px; margin-left: 10px" src="/assets/ico/delete1.ico" /></a> }<p style="font-size: 10px; margin-bottom: 20px; margin-left: 35px"><em>by <span style="color: #29AAE3">@attachment.AuthorUser.DisplayName</span> on @attachment.Created.ToString("g")</em></p>
+                            }
+                        </dd>
+                        <dt>
+
+                        </dt>
+
+                        <dd>
+                            @{
+                                var aau = false;
+                                var acu = Model.AuthorUserId.Equals(User.Identity.GetUserId());
+                                if (Model.AssignedToUserId != null) { aau = Model.AssignedToUserId.Equals(User.Identity.GetUserId()); }
+
+                                if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Submitter") && acu) || (User.IsInRole("Developer") && (aau || acu)))
+                                {
+                                <!--Create Attachments-->
+                                    using (Html.BeginForm("CreateAttachment", "Tickets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div>
+                                            <div class="form-group">
+                                                <input type="hidden" name="TicketId" value="@Model.Id" />
+                                                <input type="file" name="files" id="files" multiple required />
+                                            </div>
+                                            <button type="submit" class="btn btn-default" style="">Attach</button>
+                                        </div>
+                                    }
+                                }
                             }
                         </dd>
                     </dl>
                 </div>
-                @{
-                    var aau = false;
-                    var acu = Model.AuthorUserId.Equals(User.Identity.GetUserId());
-                    if (Model.AssignedToUserId != null) { aau = Model.AssignedToUserId.Equals(User.Identity.GetUserId()); }
-
-                    if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Submitter") && acu) || (User.IsInRole("Developer") && (aau || acu)))
-                    {
-                <!--Create Attachments-->
-                        using (Html.BeginForm("CreateAttachment", "Tickets", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <div class="col-md-offset-2">
-                                <div class="form-group">
-                                    <input type="hidden" name="TicketId" value="@Model.Id" />
-                                    <input type="file" name="files" id="files" multiple required/>
-                                </div>
-                                <button type="submit" class="btn btn-primary" style="">Attach</button>
-                            </div>
-                        }
-                    }
-                }
+                
             </div>
             <div class="widget-footer">
                 @{
@@ -164,18 +171,18 @@
 
                     if (User.IsInRole("Administrator") || User.IsInRole("Project Manager") || (User.IsInRole("Submitter") && ccu) || (User.IsInRole("Developer") && (cau || ccu)))
                     {
-            <!-- Create Comments -->
+                    <!-- Create Comments -->
                         using (Html.BeginForm("CreateComment", "Tickets", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
                             <div style="padding: 20px">
                                 <h4 style="">Leave a Comment:</h4>
                                 <form role="form" action="">
-                                    <div class="form-group">
+                                    <div class="form-group col-md-6">
                                         <input type="hidden" name="TicketId" value="@Model.Id" />
                                         <textarea class="form-control" required data-validation-required-message="This field can't be left blank" name="Body" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" style="">Submit</button>
+                                    </div><br />
+                                    <button type="submit" class="btn btn-default" style="">Submit</button>
                                 </form>
                             </div>
                             <hr />
@@ -193,7 +200,7 @@
             <div style="max-height: 500px">
                 <div class="widget widget-scrolling">
                     <div class="widget-header">
-                        <h3>Comments</h3>
+                        <h3><i class="fa fa-comments"></i> Comments</h3>
                         <div class="widget-header-toolbar">
                             <div class="label" style="font-size: 12px; color: black; background-color: none">Total (@Model.TicketComments.Count())</div>
                         </div>
@@ -229,12 +236,12 @@
     <div class="tab-pane activity" id="activity-tab">
         <div class="user-info-left">
             <div class="col-md-3">
-                <i class="fa fa-caret-right animated pulse infinite col-md-offset-2" style="width: 20%; z-index: 1; font-size: 16px; margin-top: 70px; position: fixed; color: #ff6666"></i>
+                <i class="fa fa-caret-right animated pulse infinite col-md-offset-2" style="width: 20%; z-index: 1; font-size: 16px; margin-top: 70px; position: fixed; color: #29AAE3"></i>
             </div>
         </div>
         <div class="user-info-right">            
-            <div class="col-md-9" style="padding-left: 30px; padding-bottom: 220px; border-left: 2px solid #ff6666">
-                <a href="javascript:;" id="scrollToBottom"><i class="fa fa-chevron-circle-down" style="font-size: 20px; color: #ff6666"></i></a>
+            <div class="col-md-9" style="padding-left: 30px; padding-bottom: 220px; border-left: 2px solid #29AAE3">
+                <a href="javascript:;" id="scrollToBottom"><i class="fa fa-chevron-circle-down" style="font-size: 20px; color: #29AAE3"></i></a>
                 <hr class="animated fadeInLeftBig">
                 @foreach (var item in Model.TicketHistories)
                 {
@@ -247,12 +254,12 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <!--OldValue = ticket.Title (cheese from controller)-->
                                 <p>Name: @item.OldValue</p>
                                 <p>Description: <em>"@item.NewValue"</em></p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>               
@@ -267,10 +274,10 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>The ticket @item.Dialogue was changed from <em>"@item.OldValue"</em> to <em>"@item.NewValue"</em>.</p>                      
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -285,14 +292,14 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p><strong>@item.NewValue</strong> is now the @item.Dialogue.</p>
                                 @if (item.OldValue != null)
                                 {
                                 <p>Previously assigned to: <strong>@item.OldValue</strong></p>
                                 }
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -307,11 +314,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>A @item.Dialogue was added to the ticket: </p>
                                 <p><em>"@item.NewValue"</em>.</p>                               
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -326,10 +333,10 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>A @item.Dialogue from <em>"@item.OldValue"</em> to <em>"@item.NewValue"</em>.</p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -344,11 +351,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>A @item.Dialogue was added to the ticket:</p>
                                 <p>@item.NewValue</p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -363,11 +370,11 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>@item.Dialogue from the ticket:</p>
                                 <p>@item.OldValue</p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
@@ -382,18 +389,18 @@
                                     <em style="font-size: 10px; color: black">@item.Changed.ToString("g")</em>
                                 </div>
                             </div>
-                            <div class="widget-content" style="background-color: #cceeff; font-size: 12px">
+                            <div class="widget-content" style="background-color: #031B25; font-size: 12px; color: white">
                                 <p>@item.Dialogue from the ticket:</p>
                                 <p><em>"@item.OldValue"</em></p>
                             </div>
-                            <div class="widget-footer" style="background-color:white; color: #ff6666">
+                            <div class="widget-footer" style="background-color:white; color: #29AAE3">
                                 @item.User.DisplayName
                             </div>
                         </div>
                         <hr class="animated fadeInLeftBig">
                     }
                 }
-                <a href="javascript:;" id="scrollToTop"><i class="fa fa-chevron-circle-up" style="font-size: 20px; color: #ff6666"></i></a>
+                <a href="javascript:;" id="scrollToTop"><i class="fa fa-chevron-circle-up" style="font-size: 20px; color: #29AAE3"></i></a>
             </div>
         </div>
     </div>  

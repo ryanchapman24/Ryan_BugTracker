@@ -26,7 +26,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Created)
+                @Model.Created.ToString("g");
             </dd>
 
             <dt>
@@ -35,21 +35,17 @@
 
             <dd>
                 @{
-                var fileDl = "/TicketAttachments/" + Model.FileUrl;
+                var fileDl = "/TicketAttachments/" + Model.TicketId + "/" + Model.FileUrl;
 
-                <a href="@fileDl">@Html.DisplayFor(model => model.FileUrl)</a>
+                <a href="@fileDl" target="_blank">@Html.DisplayFor(model => model.FileUrl)</a>
                 }
             </dd>
-
-        </dl>
-
-
-        <div class="form-group" style="padding-bottom: 30px">
-            <div class="col-md-offset-2 col-md-10">
+            <dt></dt>
+            <dd>
                 <input type="submit" value="Delete" class="btn btn-default" />
                 @Html.ActionLink("Cancel", "Details", new { id = Model.Ticket.Id }, new { @class = "btn btn-default" })
-            </div>
-        </div>
+            </dd>
+        </dl>
     </div>
 }
 

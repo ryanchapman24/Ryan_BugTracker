@@ -5,12 +5,12 @@
     {
     @Html.AntiForgeryToken()
 
-    <div class="logged-user" style="text-align: right; padding-top: 5px; min-width: 112px">
+    <div class="logged-user" style="text-align: right; min-width: 112px; margin-top: -4px">
         <div class="btn-group">
-            <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                @ViewBag.DisplayName<span class="caret" style="margin-left: 5px"></span>
+            <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="font-size: 16px">
+                <strong>@ViewBag.DisplayName</strong><span class="caret" style="margin-left: 5px"></span>
             </a>
-            <ul class="dropdown-menu" role="menu" style="margin-top: 0px">
+            <ul class="dropdown-menu" role="menu" style="margin-top: 13px">
                 <li>
                     <a href="@Url.Action("ProfilePage", "Home", new { id = User.Identity.GetUserId() })">
                         <i class="fa fa-user"></i>

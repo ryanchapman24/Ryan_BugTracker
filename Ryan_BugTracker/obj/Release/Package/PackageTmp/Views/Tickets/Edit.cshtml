@@ -6,7 +6,7 @@
 
 <h2>Edit Ticket</h2>
 <hr />
-<strong>Project: </strong>@Html.DisplayFor(model => model.Project.Title)
+<h4 style="color: #29AAE3"><strong style="color: #031B25; font-size: 13px">PROJECT: </strong>@Html.DisplayFor(model => model.Project.Title)</h4>
 
 @using (Html.BeginForm())
 {
@@ -26,7 +26,7 @@
             <div class="control-label col-md-2">
                 <strong>Ticket Name</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
@@ -36,7 +36,7 @@
             <div class="control-label col-md-2">
                 <strong>Description</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <textarea id="Body" class="form-control" name="Body" required data-validation-required-message="This field can't be left blank" rows="3">@Model.Body</textarea>
                 @*@Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
@@ -47,7 +47,7 @@
             <div class="control-label col-md-2">
                 <strong>Project</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("ProjectId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
             </div>
@@ -64,7 +64,7 @@
                 <div class="control-label col-md-2">
                     <strong>Ticket Name</strong>
                 </div>
-                <div class="col-md-10" style="padding-top: 9px">
+                <div class="col-md-4" style="padding-top: 9px">
                     @Html.DisplayFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
@@ -74,7 +74,7 @@
                 <div class="control-label col-md-2">
                     <strong>Description</strong>
                 </div>
-                <div class="col-md-10" style="padding-top: 9px">                  
+                <div class="col-md-4" style="padding-top: 9px">                  
                     @Html.DisplayFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
                 </div>
@@ -84,7 +84,7 @@
                 <div class="control-label col-md-2">
                     <strong>Project</strong>
                 </div>
-                <div class="col-md-10" style="padding-top: 9px">
+                <div class="col-md-4" style="padding-top: 9px">
                     @Html.DisplayFor(model => model.Project.Title, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
                 </div>
@@ -95,7 +95,7 @@
             <div class="control-label col-md-2">
                 <strong>Type</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("TicketTypeId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
             </div>
@@ -105,7 +105,7 @@
             <div class="control-label col-md-2">
                 <strong>Priority</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("TicketPriorityId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketPriorityId, "", new { @class = "text-danger" })
             </div>
@@ -115,7 +115,7 @@
             <div class="control-label col-md-2">
                 <strong>Status</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("TicketStatusId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketStatusId, "", new { @class = "text-danger" })
             </div>
@@ -130,5 +130,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "Home")
+    @*@Html.ActionLink("Go Back", "Index", "Home")*@
+    <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #031B25; border-color: #000000"><i class="fa fa-arrow-left"></i> Go Back</a>
 </div>

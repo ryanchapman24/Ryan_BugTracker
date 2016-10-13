@@ -1,8 +1,8 @@
 ﻿$('#my-select').multiSelect()
 
 $('.searchable').multiSelect({
-    selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='' style=''>",
-    selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='' style=''>",
+    selectableHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>Available Users</strong></div><input type='text' class='search-input form-control' autocomplete='off' placeholder='' style=''>",
+    selectionHeader: "<div class='custom-header' style='text-align: center; background-color: #031B25; color: white'><strong>Assigned Users</strong></div><input type='text' class='search-input form-control' autocomplete='off' placeholder='' style=''>",
     afterInit: function (ms) {
         var that = this,
             $selectableSearch = that.$selectableUl.prev(),

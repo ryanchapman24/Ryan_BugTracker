@@ -1,7 +1,211 @@
-﻿
+﻿@model IEnumerable<Ryan_BugTracker.Models.AdminUserListModels>
+@using Ryan_BugTracker.Models;
+@using Microsoft.AspNet.Identity;
+@using Ryan_BugTracker.Models.Helpers;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System;
+@using System.Collections.Generic;
+@using System.Data;
+@using System.Data.Entity;
+@using System.Linq;
+@using System.Net;
+@using System.Web;
+@using System.Web.Mvc;
+@using Ryan_BugTracker.Models;
+@using Microsoft.AspNet.Identity;
+@using System.IO;
+@using Microsoft.AspNet.Identity.Owin;
+@using System.Threading.Tasks;
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<div class="main-header">
+    <h2>ADMINISTRATOR PANEL</h2>
+    <em>Manage your Users and Clients</em>
+</div>
+
+<div class="widget widget-table">
+    <div class="widget-header">
+        <h3>
+            <i class="fa fa-users"></i> Users
+        </h3>
+        <div class="btn-group widget-header-toolbar">
+            <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
+            <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
+        </div>
+    </div>
+    <div class="widget-content">
+        <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable adminTable">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Roles</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr style="font-size: 10px">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.FirstName)
+                            </td>
+                            <td>
+                                <a href="@string.Format("{0}{1}","mailto:",item.user.Email)">@item.user.Email</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.PhoneNumber)
+                            </td>
+                            <td>
+                                @foreach (var role in item.roles)
+                                {
+                                    <p>@role</p>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("EditUserRoles", new { id = item.user.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Manage Roles</a><br />
+                                <a href="@Url.Action("ProfilePage", "Home", new { id = item.user.Id }, null)"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Profile</a><br />
+                                @*@Html.ActionLink("Delete", "Delete", new { id = item.user.Id }) <br />*@
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-md-4" style="padding: 0px">
+    <div class="widget widget-table">
+        <div class="widget-header">
+            <h3>
+                <i class="fa fa-briefcase"></i> Clients 
+            </h3>
+            <div class="btn-group widget-header-toolbar pull-right">
+                <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
+                <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
+            </div>
+            <a href="@Url.Action("CreateClient", "Admin")" class="btn btn-default pull-right" style="margin-top: 4px; padding-top: 3px; padding-bottom: 2px">NEW</a>
+        </div>
+        <div class="widget-content">
+            <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable adminTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Active?</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var client in ViewBag.Clients)
+                        {
+                            <tr style="font-size: 10px">
+                                <td>
+                                    @client.Name
+                                </td>
+                                <td>
+                                    @client.IsActive
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("EditClient", new { id = client.Id })"><i class="fa fa-lock" style="margin-right: 3px; font-size: 16px"></i> Edit</a><br />
+                                    <a href="@Url.Action("ClientDetails", new { id = client.Id })"><i class="fa fa-eye" style="margin-right: 3px; font-size: 16px"></i> Details</a><br />
+                                    <a href="@Url.Action("DeleteClient", new { id = client.Id })"><i class="fa fa-trash" style="margin-right: 3px; font-size: 16px"></i> Delete</a><br />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-md-8" style="padding-left: 15px; padding-right: 0px">
+    <div class="widget widget-table">
+        <div class="widget-header">
+            <h3>
+                <i class="fa fa-bar-chart"></i> Developer Statistics
+            </h3>
+            <div class="btn-group widget-header-toolbar">
+                <a href="#" title="Focus" class="btn-borderless btn-focus"><i class="fa fa-eye"></i></a>
+                <a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
+            </div>
+        </div>
+        <div class="widget-content">
+            <table @*id="datatable-data-export"*@ class="table table-sorting table-striped table-hover table-bordered datatable adminTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th># Open Tickets</th>
+                        <th>Completion Percentage</th>
+                        @*<th>Avg Time to Complete</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        ApplicationDbContext context = new ApplicationDbContext();
+                        var roleD = context.Roles.SingleOrDefault(u => u.Name == "Developer");
+
+                        foreach (var developer in context.Users.Where(u => u.Roles.Any(r => (r.RoleId == roleD.Id))).OrderBy(u => u.DisplayName).ToList())
+                        {
+                            var compPercent = 0;
+                            if (context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count() > 0)
+                            {
+                                compPercent = context.Tickets.Where(t => t.TicketStatusId == 4 && t.AssignedToUserId == developer.Id).Count() / context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count();
+                            }
+                            else
+                            {
+                                compPercent = 0;
+                            }
+
+                            <tr style="font-size: 10px">
+                                <td>
+                                    @developer.DisplayName
+                                </td>
+                                <td>
+                                    @context.Tickets.Where(t => t.TicketStatusId != 4 && t.AssignedToUserId == developer.Id).Count()
+                                </td>                          
+                                @if (compPercent > 0)
+                                {
+                                    <td>
+                                        @compPercent %
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        N/A
+                                    </td>
+                                }
+                                @*<td>               
+                                </td>*@
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('.adminTable').DataTable({
+            "iDisplayLength": 10,
+            "bSort": false,
+            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+        });
+    </script>
+}

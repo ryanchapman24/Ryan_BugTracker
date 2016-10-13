@@ -675,6 +675,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Properties\PublishProfiles\AnomalySquaredIntranet.pubxml" />
     <None Include="Views\Home\Error.cshtml" />
     <Content Include="TicketAttachments\50\12053180_10153710516487502_1641589672_n.jpg" />
     <Content Include="TicketAttachments\50\12064412_10153710516607502_1839379629_n.jpg" />

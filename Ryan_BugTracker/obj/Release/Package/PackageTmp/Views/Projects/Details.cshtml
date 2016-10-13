@@ -6,7 +6,7 @@
 
 <h2>Project Details</h2>
 <hr />
-@Html.DisplayFor(model => model.Title)
+<h4 style="color: #29AAE3">@Html.DisplayFor(model => model.Title)</h4>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Model.Created.ToString("d")
+            @Model.Created.ToString("g")
         </dd>
 
         <dt>
@@ -25,8 +25,16 @@
         <dd>
         @if (Model.Updated.HasValue)
         {
-            @Model.Updated.Value.ToString("d")
+            @Model.Updated.Value.ToString("g")
         }
+        </dd>
+
+        <dt>
+            Client<br /><br />
+        </dt>
+
+        <dd>
+            @Model.Client.Name
         </dd>
 
         <dt>
@@ -48,5 +56,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "ProjectList")
+    @*@Html.ActionLink("Go Back", "Index", "Home")*@
+    <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #031B25; border-color: #000000"><i class="fa fa-arrow-left"></i> Go Back</a>
 </p>

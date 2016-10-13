@@ -7,7 +7,8 @@
 <h2>Ticket Assignment</h2>
 
 <hr />
-<strong>Project: </strong>@Html.DisplayFor(model => model.Project.Title)
+<h4 style="color: #29AAE3"><strong style="color: #031B25; font-size: 13px">PROJECT: </strong>@Html.DisplayFor(model => model.Project.Title)</h4>
+
 
 @using (Html.BeginForm())
 {
@@ -42,7 +43,7 @@
             <div class="control-label col-md-2">
                 <strong>Assignment</strong>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("AssignedToUserId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
             </div>
@@ -57,5 +58,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "Home")
+    @*@Html.ActionLink("Go Back", "Index", "Home")*@
+    <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #031B25; border-color: #000000"><i class="fa fa-arrow-left"></i> Go Back</a>
 </div>
