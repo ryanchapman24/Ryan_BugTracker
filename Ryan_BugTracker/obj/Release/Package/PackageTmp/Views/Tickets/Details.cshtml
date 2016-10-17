@@ -129,7 +129,7 @@
                             @foreach (var attachment in Model.TicketAttachments.Reverse())
                             {
                                 var fileDl = "/TicketAttachments/" + attachment.TicketId + "/" + attachment.FileUrl;
-                                <img src="/assets/img/Document.png" /><a href="@fileDl" target="_blank">@attachment.FileUrl</a> if (User.IsInRole("Administrator")){ <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id, ticketid = Model.Id })"><img style="width: 10px; margin-left: 10px" src="/assets/ico/delete1.ico" /></a> }<p style="font-size: 10px; margin-bottom: 20px; margin-left: 35px"><em>by <span style="color: #29AAE3">@attachment.AuthorUser.DisplayName</span> on @attachment.Created.ToString("g")</em></p>
+                                <img src="/ASTickets/assets/img/Document.png" /><a href="@string.Format("{0}{1}","http://192.168.1.8:88/ASTickets",fileDl)" target="_blank">@attachment.FileUrl</a> if (User.IsInRole("Administrator")){ <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id, ticketid = Model.Id })"><img style="width: 10px; margin-left: 10px" src="/ASTickets/assets/ico/delete1.ico" /></a> }<p style="font-size: 10px; margin-bottom: 20px; margin-left: 35px"><em>by <span style="color: #29AAE3">@attachment.AuthorUser.DisplayName</span> on @attachment.Created.ToString("g")</em></p>
                             }
                         </dd>
                         <dt>
@@ -210,7 +210,7 @@
                         {
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="@comment.AuthorUser.ProfilePic" style="height: 40px; width: 40px; background-color: white; margin-right: 15px" alt="" />
+                                    <img class="media-object" src="@string.Format("{0}{1}","http://192.168.1.8:88/ASTickets",comment.AuthorUser.ProfilePic)" style="height: 40px; width: 40px; background-color: white; margin-right: 15px" alt="" />
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">

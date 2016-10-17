@@ -898,7 +898,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
-      <publishTime>10/13/2016 15:24:39</publishTime>
+      <publishTime>10/17/2016 15:45:10</publishTime>
     </File>
     <File Include="bin/SendGrid.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
@@ -1873,7 +1873,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/13/2016 15:28:27</publishTime>
+      <publishTime>10/13/2016 15:25:36</publishTime>
     </File>
   </ItemGroup>
 </Project>
