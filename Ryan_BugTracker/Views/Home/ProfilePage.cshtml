@@ -24,21 +24,21 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="user-info-left">
-                            <img src="@Model.ProfilePic" alt="Profile Picture" style="max-width: 180px; background-color: white" />
+                            <img src="@string.Format("{0}{1}","http://192.168.1.8:88/ASTickets",Model.ProfilePic)" alt="Profile Picture" style="max-width: 180px; background-color: white" />
                             <h2>@Model.DisplayName <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
                             @if (Model.Id == User.Identity.GetUserId())
                             {
                                 @Html.ActionLink("[Update your account information]", "UpdateInformation", "Manage")
                             }
                             @*<div class="contact">
-                                    <a href="#" class="btn btn-block btn-custom-primary"><i class="fa fa-envelope-o"></i> Send Message</a>
-                                    <a href="#" class="btn btn-block btn-custom-secondary"><i class="fa fa-book"></i> Add To Contact</a>
-                                    <ul class="list-inline social">
-                                        <li><a href="#" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
-                                        <li><a href="#" title="Twitter"><i class="fa fa-twitter-square"></i></a></li>
-                                        <li><a href="#" title="Google Plus"><i class="fa fa-google-plus-square"></i></a></li>
-                                    </ul>
-                                </div>*@
+                                <a href="#" class="btn btn-block btn-custom-primary"><i class="fa fa-envelope-o"></i> Send Message</a>
+                                <a href="#" class="btn btn-block btn-custom-secondary"><i class="fa fa-book"></i> Add To Contact</a>
+                                <ul class="list-inline social">
+                                    <li><a href="#" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#" title="Twitter"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#" title="Google Plus"><i class="fa fa-google-plus-square"></i></a></li>
+                                </ul>
+                            </div>*@
                         </div>
                     </div>
                     <div class="col-md-9">

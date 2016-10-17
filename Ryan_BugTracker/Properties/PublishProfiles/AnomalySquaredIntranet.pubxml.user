@@ -1366,7 +1366,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2016 16:06:31</publishTime>
     </File>
     <File Include="private.config">
-      <publishTime>09/02/2016 12:40:24</publishTime>
+      <publishTime>10/17/2016 15:42:17</publishTime>
+    </File>
+    <File Include="ProfilePics/Headshot_Square.png">
+      <publishTime>09/07/2016 11:50:02</publishTime>
     </File>
     <File Include="ProfilePics/JonSnow.jpeg">
       <publishTime>09/02/2016 12:30:50</publishTime>
@@ -1376,6 +1379,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="ProfilePics/Riddick.jpg">
       <publishTime>09/02/2016 12:30:50</publishTime>
+    </File>
+    <File Include="ProfilePics/SmallerFace.jpg">
+      <publishTime>10/12/2016 11:09:45</publishTime>
     </File>
     <File Include="Scripts/ai.0.15.0-build58334.js">
       <publishTime>09/02/2016 12:30:50</publishTime>
@@ -1650,6 +1656,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Template Pages/widgets.html">
       <publishTime>09/02/2016 12:30:50</publishTime>
     </File>
+    <File Include="TicketAttachments/2/AS_logo.png">
+      <publishTime>10/03/2016 14:49:42</publishTime>
+    </File>
     <File Include="TicketAttachments/50/1 - C# %281%29.pptx">
       <publishTime>09/02/2016 12:30:50</publishTime>
     </File>
@@ -1756,7 +1765,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2016 14:59:22</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>09/29/2016 17:09:49</publishTime>
+      <publishTime>10/17/2016 15:28:25</publishTime>
     </File>
     <File Include="Views/Home/Error.cshtml">
       <publishTime>09/29/2016 17:29:59</publishTime>
@@ -1765,7 +1774,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2016 11:13:35</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
-      <publishTime>09/02/2016 12:30:50</publishTime>
+      <publishTime>10/17/2016 14:55:57</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>09/29/2016 12:46:43</publishTime>
@@ -1843,7 +1852,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2016 11:58:05</publishTime>
     </File>
     <File Include="Views/Tickets/Details.cshtml">
-      <publishTime>10/03/2016 16:19:26</publishTime>
+      <publishTime>10/17/2016 15:05:25</publishTime>
     </File>
     <File Include="Views/Tickets/Edit.cshtml">
       <publishTime>10/03/2016 12:26:43</publishTime>
