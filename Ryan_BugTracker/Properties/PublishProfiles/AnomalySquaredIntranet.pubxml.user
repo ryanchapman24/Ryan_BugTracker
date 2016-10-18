@@ -9,6 +9,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>\\D05\wwwroot\ASTickets</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include=".gitattributes">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include=".gitignore">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="ApplicationInsights.config">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
@@ -229,6 +235,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="assets/img/comment.png">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="assets/img/delete-2-xl.png">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="assets/img/diagonal-stripe.png">
@@ -738,6 +747,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/02/2016 12:30:47</publishTime>
     </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>09/02/2016 12:30:47</publishTime>
+    </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
@@ -747,10 +759,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>09/02/2016 12:30:47</publishTime>
     </File>
+    <File Include="bin/EntityFramework.SqlServer.xml">
+      <publishTime>09/02/2016 12:30:47</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.xml">
+      <publishTime>09/02/2016 12:30:47</publishTime>
+    </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>09/02/2016 12:30:47</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
@@ -759,25 +780,49 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.WindowsServer.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>09/02/2016 12:30:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.xml">
       <publishTime>09/02/2016 12:30:47</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
@@ -786,7 +831,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
@@ -795,22 +846,46 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/Owin.dll">
@@ -838,66 +913,72 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
+      <publishTime>10/17/2016 15:45:10</publishTime>
+    </File>
+    <File Include="bin/Ryan_BugTracker.dll.config">
+      <publishTime>09/27/2016 16:06:37</publishTime>
+    </File>
+    <File Include="bin/Ryan_BugTracker.pdb">
       <publishTime>10/17/2016 15:45:10</publishTime>
     </File>
     <File Include="bin/SendGrid.dll">
@@ -912,25 +993,49 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/System.Net.Http.Formatting.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/System.Web.Mvc.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
+    <File Include="bin/System.Web.Razor.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.xml">
+      <publishTime>09/02/2016 12:30:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.xml">
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
@@ -1362,6 +1467,24 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Multiselect PlugIn/test/src/jquery.js">
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
+    <File Include="obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs">
+      <publishTime>09/02/2016 12:30:49</publishTime>
+    </File>
+    <File Include="obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs">
+      <publishTime>09/02/2016 12:30:49</publishTime>
+    </File>
+    <File Include="obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs">
+      <publishTime>09/02/2016 12:30:49</publishTime>
+    </File>
+    <File Include="obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs">
+      <publishTime>09/02/2016 12:30:50</publishTime>
+    </File>
+    <File Include="obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs">
+      <publishTime>09/02/2016 12:30:50</publishTime>
+    </File>
+    <File Include="obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs">
+      <publishTime>09/02/2016 12:30:50</publishTime>
+    </File>
     <File Include="packages.config">
       <publishTime>09/27/2016 16:06:31</publishTime>
     </File>
@@ -1382,6 +1505,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="ProfilePics/SmallerFace.jpg">
       <publishTime>10/12/2016 11:09:45</publishTime>
+    </File>
+    <File Include="Project_Readme.html">
+      <publishTime>09/02/2016 12:30:50</publishTime>
     </File>
     <File Include="Scripts/ai.0.15.0-build58334.js">
       <publishTime>09/02/2016 12:30:50</publishTime>
@@ -1655,6 +1781,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Template Pages/widgets.html">
       <publishTime>09/02/2016 12:30:50</publishTime>
+    </File>
+    <File Include="TicketAttachments/1/Anomaly_EmployeePTO.pdf">
+      <publishTime>09/07/2016 11:59:41</publishTime>
+    </File>
+    <File Include="TicketAttachments/1/Anomaly_EmployeeStatusChange.pdf">
+      <publishTime>09/07/2016 12:00:26</publishTime>
+    </File>
+    <File Include="TicketAttachments/1/BusinessExpenseReimb_Policy.pdf">
+      <publishTime>09/07/2016 12:00:26</publishTime>
     </File>
     <File Include="TicketAttachments/2/AS_logo.png">
       <publishTime>10/03/2016 14:49:42</publishTime>
