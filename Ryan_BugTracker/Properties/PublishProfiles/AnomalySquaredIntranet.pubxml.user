@@ -973,7 +973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
-      <publishTime>10/17/2016 15:45:10</publishTime>
+      <publishTime>10/25/2016 13:25:46</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll.config">
       <publishTime>09/27/2016 16:06:37</publishTime>
@@ -1273,22 +1273,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="Controllers/AccountController.cs">
-      <publishTime>09/09/2016 12:23:15</publishTime>
+      <publishTime>10/17/2016 15:40:01</publishTime>
     </File>
     <File Include="Controllers/AdminController.cs">
       <publishTime>09/27/2016 15:10:50</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>10/03/2016 10:31:48</publishTime>
+      <publishTime>10/25/2016 13:14:22</publishTime>
     </File>
     <File Include="Controllers/ManageController.cs">
       <publishTime>09/09/2016 12:23:47</publishTime>
     </File>
     <File Include="Controllers/ProjectsController.cs">
-      <publishTime>10/12/2016 11:49:27</publishTime>
+      <publishTime>10/25/2016 13:14:59</publishTime>
     </File>
     <File Include="Controllers/TicketsController.cs">
-      <publishTime>10/12/2016 11:55:51</publishTime>
+      <publishTime>10/25/2016 13:13:07</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>09/02/2016 12:30:49</publishTime>
@@ -1900,13 +1900,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2016 14:59:22</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>10/17/2016 15:28:25</publishTime>
+      <publishTime>10/25/2016 13:16:28</publishTime>
     </File>
     <File Include="Views/Home/Error.cshtml">
       <publishTime>09/29/2016 17:29:59</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/12/2016 11:13:35</publishTime>
+      <publishTime>10/25/2016 13:17:26</publishTime>
     </File>
     <File Include="Views/Home/ProfilePage.cshtml">
       <publishTime>10/17/2016 14:55:57</publishTime>
@@ -1927,7 +1927,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/29/2016 12:46:43</publishTime>
     </File>
     <File Include="Views/Manage/UpdateInformation.cshtml">
-      <publishTime>09/07/2016 11:38:34</publishTime>
+      <publishTime>10/25/2016 13:19:50</publishTime>
     </File>
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>09/29/2016 12:46:42</publishTime>
@@ -1987,7 +1987,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2016 11:58:05</publishTime>
     </File>
     <File Include="Views/Tickets/Details.cshtml">
-      <publishTime>10/17/2016 15:05:25</publishTime>
+      <publishTime>10/25/2016 16:02:09</publishTime>
     </File>
     <File Include="Views/Tickets/Edit.cshtml">
       <publishTime>10/03/2016 12:26:43</publishTime>
