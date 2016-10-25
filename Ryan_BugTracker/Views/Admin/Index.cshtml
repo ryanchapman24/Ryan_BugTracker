@@ -162,7 +162,7 @@
                             var compPercent = 0;
                             if (context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count() > 0)
                             {
-                                compPercent = (context.Tickets.Where(t => t.TicketStatusId == 4 && t.AssignedToUserId == developer.Id).Count() / context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count()) * 100;
+                                compPercent = (context.Tickets.Where(t => t.TicketStatusId == 5 && t.AssignedToUserId == developer.Id).Count() / context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count()) * 100;
                             }
                             else
                             {
@@ -174,7 +174,7 @@
                                     @developer.DisplayName
                                 </td>
                                 <td>
-                                    @context.Tickets.Where(t => t.TicketStatusId != 4 && t.AssignedToUserId == developer.Id).Count()
+                                    @context.Tickets.Where(t => t.TicketStatusId != 5 && t.AssignedToUserId == developer.Id).Count()
                                 </td>                          
                                 @if (compPercent > 0)
                                 {

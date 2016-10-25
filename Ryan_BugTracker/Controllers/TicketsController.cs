@@ -794,14 +794,14 @@ namespace Ryan_BugTracker.Controllers
             ApplicationUser user = new ApplicationUser();
             user = db.Users.Find(uId);
 
-            ViewBag.OpenTicketsAssigned = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).ToList();
-            ViewBag.ClosedTicketsAssigned = db.Tickets.Where(t => t.TicketStatusId == 4 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+            ViewBag.OpenTicketsAssigned = db.Tickets.Where(t => t.TicketStatusId != 5 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+            ViewBag.ClosedTicketsAssigned = db.Tickets.Where(t => t.TicketStatusId == 5 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).ToList();
 
-            ViewBag.OpenTicketsSubmitted = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).ToList();
-            ViewBag.ClosedTicketsSubmitted = db.Tickets.Where(t => t.TicketStatusId == 4 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+            ViewBag.OpenTicketsSubmitted = db.Tickets.Where(t => t.TicketStatusId != 5 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).ToList();
+            ViewBag.ClosedTicketsSubmitted = db.Tickets.Where(t => t.TicketStatusId == 5 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).ToList();
 
-            ViewBag.AssignedCount = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).Count();
-            ViewBag.SubmittedCount = db.Tickets.Where(t => t.TicketStatusId != 4 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).Count();
+            ViewBag.AssignedCount = db.Tickets.Where(t => t.TicketStatusId != 5 && t.AssignedToUserId == user.Id).OrderByDescending(t => t.Created).Count();
+            ViewBag.SubmittedCount = db.Tickets.Where(t => t.TicketStatusId != 5 && t.AuthorUserId == user.Id).OrderByDescending(t => t.Created).Count();
 
             return View();
         }
