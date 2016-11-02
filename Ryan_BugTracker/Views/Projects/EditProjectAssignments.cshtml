@@ -1,0 +1,22 @@
+﻿@model Ryan_BugTracker.Models.ProjectUserViewModels
+
+@{
+    ViewBag.Title = "EditProjectAssignments";
+}
+<h2>Edit Project Assignments</h2>
+
+<hr />
+
+@using (Html.BeginForm("EditProjectAssignments", "Projects", FormMethod.Post))
+{
+    <h4 style="color: #29AAE3">@Html.DisplayFor(model => model.Project.Title) <input type="submit" value="Assign Users" class="btn btn-default" style="margin-left: 20px" /></h4>
+    @Html.HiddenFor((model => model.Project.Id), new { })
+    <hr />
+
+    @Html.ListBox("SelectedUsers", Model.Users, new { @class = "searchable" })
+    <br />
+    <div>
+        @*@Html.ActionLink("Go Back", "Index", "Home")*@
+        <a href="javascript:history.go(-1)" class="btn btn-custom-primary" style="background-color: #031B25; border-color: #000000"><i class="fa fa-arrow-left"></i> Go Back</a>
+    </div>
+}
