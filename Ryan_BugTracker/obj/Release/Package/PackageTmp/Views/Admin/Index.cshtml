@@ -159,10 +159,12 @@
 
                         foreach (var developer in context.Users.Where(u => u.Roles.Any(r => (r.RoleId == roleD.Id))).OrderBy(u => u.DisplayName).ToList())
                         {
-                            var compPercent = 0;
+                            decimal compPercent = 0;
                             if (context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count() > 0)
                             {
-                                compPercent = (context.Tickets.Where(t => t.TicketStatusId == 5 && t.AssignedToUserId == developer.Id).Count() / context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count()) * 100;
+                                decimal completeTickets = context.Tickets.Where(t => t.TicketStatusId == 5 && t.AssignedToUserId == developer.Id).Count();
+                                decimal totalTickets = context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count();
+                                compPercent = Math.Round((completeTickets * 10000) / totalTickets) / 100;
                             }
                             else
                             {
@@ -174,12 +176,12 @@
                                     @developer.DisplayName
                                 </td>
                                 <td>
-                                    @context.Tickets.Where(t => t.TicketStatusId != 5 && t.AssignedToUserId == developer.Id).Count()
+                                    <strong style="color: #29AAE3">@context.Tickets.Where(t => t.TicketStatusId != 5 && t.AssignedToUserId == developer.Id).Count()</strong>
                                 </td>                          
-                                @if (compPercent > 0)
+                                @if (context.Tickets.Where(t => t.AssignedToUserId == developer.Id).Count() > 0)
                                 {
                                     <td>
-                                        @compPercent %
+                                        <strong style="color: #29AAE3">@compPercent</strong> %
                                     </td>
                                 }
                                 else

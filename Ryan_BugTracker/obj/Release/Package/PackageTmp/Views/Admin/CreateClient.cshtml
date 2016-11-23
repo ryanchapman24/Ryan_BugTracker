@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            Is this Client active?
             <div class="col-md-4">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsActive)
@@ -40,5 +40,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Administrator Panel", "Index")
 </div>

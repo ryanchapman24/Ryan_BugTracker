@@ -973,7 +973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
-      <publishTime>10/25/2016 13:25:46</publishTime>
+      <publishTime>11/23/2016 12:55:23</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll.config">
       <publishTime>09/27/2016 16:06:37</publishTime>
@@ -1882,25 +1882,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:50</publishTime>
     </File>
     <File Include="Views/Admin/ClientDetails.cshtml">
-      <publishTime>09/29/2016 16:35:12</publishTime>
+      <publishTime>11/23/2016 12:51:35</publishTime>
     </File>
     <File Include="Views/Admin/CreateClient.cshtml">
-      <publishTime>09/29/2016 17:05:55</publishTime>
+      <publishTime>11/23/2016 12:51:36</publishTime>
     </File>
     <File Include="Views/Admin/Delete.cshtml">
       <publishTime>09/27/2016 14:58:28</publishTime>
     </File>
     <File Include="Views/Admin/DeleteClient.cshtml">
-      <publishTime>09/29/2016 16:33:06</publishTime>
+      <publishTime>11/23/2016 12:52:07</publishTime>
     </File>
     <File Include="Views/Admin/EditClient.cshtml">
-      <publishTime>09/29/2016 16:33:46</publishTime>
+      <publishTime>11/23/2016 12:52:29</publishTime>
     </File>
     <File Include="Views/Admin/EditUserRoles.cshtml">
-      <publishTime>09/27/2016 14:59:22</publishTime>
+      <publishTime>11/23/2016 12:52:37</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>10/28/2016 17:37:04</publishTime>
+      <publishTime>11/23/2016 12:46:47</publishTime>
     </File>
     <File Include="Views/Home/Error.cshtml">
       <publishTime>09/29/2016 17:29:59</publishTime>
@@ -1996,7 +1996,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/03/2016 14:50:27</publishTime>
     </File>
     <File Include="Views/Tickets/EditTicketAssignments.cshtml">
-      <publishTime>10/03/2016 12:34:55</publishTime>
+      <publishTime>11/23/2016 11:57:00</publishTime>
     </File>
     <File Include="Views/Tickets/MyTickets.cshtml">
       <publishTime>10/03/2016 11:29:01</publishTime>
