@@ -92,7 +92,7 @@ namespace Ryan_BugTracker.Controllers
 
         // POST: Clients/Delete/5
         [Authorize(Roles = "Administrator")]
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteClient")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteClientConfirmed(int id)
         {

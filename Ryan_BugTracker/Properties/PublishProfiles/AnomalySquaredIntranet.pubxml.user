@@ -1882,25 +1882,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:50</publishTime>
     </File>
     <File Include="Views/Admin/ClientDetails.cshtml">
-      <publishTime>11/23/2016 12:51:35</publishTime>
+      <publishTime>12/01/2016 11:02:25</publishTime>
     </File>
     <File Include="Views/Admin/CreateClient.cshtml">
-      <publishTime>11/23/2016 12:51:36</publishTime>
+      <publishTime>12/01/2016 11:08:56</publishTime>
     </File>
     <File Include="Views/Admin/Delete.cshtml">
       <publishTime>09/27/2016 14:58:28</publishTime>
     </File>
     <File Include="Views/Admin/DeleteClient.cshtml">
-      <publishTime>11/23/2016 12:52:07</publishTime>
+      <publishTime>12/01/2016 11:15:03</publishTime>
     </File>
     <File Include="Views/Admin/EditClient.cshtml">
-      <publishTime>11/23/2016 12:52:29</publishTime>
+      <publishTime>12/01/2016 11:05:53</publishTime>
     </File>
     <File Include="Views/Admin/EditUserRoles.cshtml">
       <publishTime>11/23/2016 12:52:37</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>11/23/2016 12:46:47</publishTime>
+      <publishTime>12/01/2016 11:00:52</publishTime>
     </File>
     <File Include="Views/Home/Error.cshtml">
       <publishTime>09/29/2016 17:29:59</publishTime>
