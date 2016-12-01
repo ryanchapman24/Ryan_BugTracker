@@ -311,14 +311,14 @@ namespace Ryan_BugTracker.Controllers
                             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                             // Send an email with this link       
                             var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                            await UserManager.SendEmailAsync(userToNotify.Id, "Ticket Updated: " + ticket.Title, "This ticket has been updated with respect to its:<br /><br />" + changes + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
+                            await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "Ticket Updated: " + ticket.Title, "This ticket has been updated with respect to its:<br /><br />" + changes + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                         }
                         if (ticketCreator != null)
                         {
                             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                             // Send an email with this link       
                             var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                            await UserManager.SendEmailAsync(ticketCreator, "Ticket Updated: " + ticket.Title, "This ticket has been updated with respect to its:<br /><br />" + changes + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
+                            await UserManager.SendEmailAsync(ticketCreator, "(#" + ticket.Id + ") " + "Ticket Updated: " + ticket.Title, "This ticket has been updated with respect to its:<br /><br />" + changes + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                         }
                     }
                
@@ -518,14 +518,14 @@ namespace Ryan_BugTracker.Controllers
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link          
                     var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(userToNotify.Id, "NEW Ticket Assignment", "You've been assigned to a new ticket!  Please click <a href=\"" + callbackUrl + "\">here</a> to view it.");
+                    await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "NEW Ticket Assignment", "You've been assigned to a new ticket!  Please click <a href=\"" + callbackUrl + "\">here</a> to view it.");
                 }
                 if (ticketCreator != null)
                 {
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link          
                     var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(ticketCreator, "NEW Ticket Assignment", "Someone has been assigned to your ticket!  Please click <a href=\"" + callbackUrl + "\">here</a> to view it.");
+                    await UserManager.SendEmailAsync(ticketCreator, "(#" + ticket.Id + ") " + "NEW Ticket Assignment", "Someone has been assigned to your ticket!  Please click <a href=\"" + callbackUrl + "\">here</a> to view it.");
                 }
             }
 
@@ -598,14 +598,14 @@ namespace Ryan_BugTracker.Controllers
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link       
                         var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(userToNotify.Id, "NEW Ticket Comment: " + ticket.Title, "A new comment has been added to this ticket:<br /><br /><em>" + '"' + comment.Body + '"' + "<br /><br /></em>" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
+                        await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "NEW Ticket Comment: " + ticket.Title, "A new comment has been added to this ticket:<br /><br /><em>" + '"' + comment.Body + '"' + "<br /><br /></em>" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                     }
                     if (ticketCreator != null)
                     {
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link       
                         var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(ticketCreator, "NEW Ticket Comment: " + ticket.Title, "A new comment has been added to this ticket:<br /><br /><em>" + '"' + comment.Body + '"' + "<br /><br /></em>" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
+                        await UserManager.SendEmailAsync(ticketCreator, "(#" + ticket.Id + ") " + "NEW Ticket Comment: " + ticket.Title, "A new comment has been added to this ticket:<br /><br /><em>" + '"' + comment.Body + '"' + "<br /><br /></em>" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                     }
 
                     Notification n2 = new Notification
@@ -795,14 +795,14 @@ namespace Ryan_BugTracker.Controllers
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link       
                         var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(userToNotify.Id, "NEW Ticket Attachment(s): " + ticket.Title, "New attachments have been added to this ticket:<br /><br />" + attachments + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
+                        await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "NEW Ticket Attachment(s): " + ticket.Title, "New attachments have been added to this ticket:<br /><br />" + attachments + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                     }
                     if (ticketCreator != null)
                     {
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link       
                         var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(ticketCreator, "NEW Ticket Attachment(s): " + ticket.Title, "New attachments have been added to this ticket:<br /><br />" + attachments + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
+                        await UserManager.SendEmailAsync(ticketCreator, "(#" + ticket.Id + ") " + "NEW Ticket Attachment(s): " + ticket.Title, "New attachments have been added to this ticket:<br /><br />" + attachments + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                     }
 
                     Notification n3 = new Notification
