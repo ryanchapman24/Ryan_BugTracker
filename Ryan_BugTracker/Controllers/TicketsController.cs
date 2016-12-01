@@ -300,11 +300,12 @@ namespace Ryan_BugTracker.Controllers
                 }
                 db.SaveChanges();
 
-                if (ticket.AssignedToUser != null)
+                if (ticket.AssignedToUserId != null)
                 {
                     if (oldTic?.Title != ticket.Title || oldTic?.Body != ticket.Body || oldTic?.ProjectId != ticket.ProjectId || oldTic?.TicketPriorityId != ticket.TicketPriorityId || oldTic?.TicketTypeId != ticket.TicketTypeId || oldTic?.TicketStatusId != ticket.TicketStatusId)
                     {
-                        var userToNotify = await UserManager.FindByNameAsync(ticket.AssignedToUser.Email);
+                        var assignedUser = db.Users.Find(ticket.AssignedToUserId);
+                        var userToNotify = await UserManager.FindByNameAsync(assignedUser.Email);
                         var ticketCreator = oldTic.AuthorUserId;
                         if (userToNotify != null)
                         {
@@ -589,9 +590,10 @@ namespace Ryan_BugTracker.Controllers
                 db.TicketHistories.Add(th9);
                 db.SaveChanges();
 
-                if (ticket.AssignedToUser != null)
+                if (ticket.AssignedToUserId != null)
                 {
-                    var userToNotify = await UserManager.FindByNameAsync(ticket.AssignedToUser?.Email);
+                    var assignedUser = db.Users.Find(ticket.AssignedToUserId);
+                    var userToNotify = await UserManager.FindByNameAsync(assignedUser.Email);
                     var ticketCreator = ticket.AuthorUserId;
                     if (userToNotify != null)
                     {
@@ -786,9 +788,10 @@ namespace Ryan_BugTracker.Controllers
 
                     }
                 }
-                if (ticket.AssignedToUser != null)
+                if (ticket.AssignedToUserId != null)
                 {
-                    var userToNotify = await UserManager.FindByNameAsync(ticket.AssignedToUser?.Email);
+                    var assignedUser = db.Users.Find(ticket.AssignedToUserId);
+                    var userToNotify = await UserManager.FindByNameAsync(assignedUser.Email);
                     var ticketCreator = ticket.AuthorUserId;
                     if (userToNotify != null)
                     {
