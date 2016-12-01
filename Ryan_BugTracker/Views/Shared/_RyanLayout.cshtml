@@ -165,7 +165,7 @@
                                                             <i class="fa fa-bell"></i>@if (ViewBag.Notifications.Count != 0)
                                                             {<span class="count"><strong>@ViewBag.Notifications.Count</strong></span><span class="circle"></span>}
                                                         </a>
-                                                        <ul class="dropdown-menu pre-scrollable" role="menu" style="overflow-y:auto; margin-top: 15px; max-height: 400px">
+                                                        <ul class="dropdown-menu pre-scrollable" role="menu" style="overflow-y:auto; margin-top: 15px; max-height: 400px; width: 500px">
                                                             <li class="notification-header">
                                                                 @if (ViewBag.Notifications.Count == 0)
                                                                 {
@@ -192,7 +192,7 @@
                                                                         <a href="@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-ticket" style="color: #E60404"></i>                                                                               
                                                                             <span class="text"><small>@notification.Description</small></span>                                                                        
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>                                                 
+                                                                            <span class="timestamp" style="padding-right: 5px; font-size: 10px">@notification.Created.ToString("g")</span>                                                 
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -203,7 +203,7 @@
                                                                         <a href="@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-edit yellow-font"></i>
                                                                             <span class="text"><small>@notification.Description</small></span>
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>                                                 
+                                                                            <span class="timestamp" style="padding-right: 5px; font-size: 10px">@notification.Created.ToString("g")</span>                                                 
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -214,7 +214,7 @@
                                                                         <a href = "@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-comment green-font"></i>
                                                                             <span class="text"><small>@notification.Description</small></span>
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>                                                 
+                                                                            <span class="timestamp" style="padding-right: 5px; font-size: 10px">@notification.Created.ToString("g")</span>                                                 
                                                                         </a>
                                                                     </li>
                                                                     }
@@ -225,7 +225,7 @@
                                                                         <a href="@Url.Action("DismissNotification", "Home", new { tId = notification.TicketId, nId = notification.Id, dA = false })" style="display: inline; line-height: 2.3">
                                                                             <i class="fa fa-file-text-o" style="color: blue"></i>
                                                                             <span class="text"><small>@notification.Description</small></span>
-                                                                            <span class="timestamp" style="padding-right: 5px">@notification.Created.ToString("g")</span>
+                                                                            <span class="timestamp" style="padding-right: 5px; font-size: 10px">@notification.Created.ToString("g")</span>
                                                                         </a>
                                                                     </li>
                                                                     }

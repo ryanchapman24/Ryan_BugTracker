@@ -327,7 +327,7 @@ namespace Ryan_BugTracker.Controllers
                         Notification n1 = new Notification
                         {
                             TicketId = ticket.Id,
-                            Description = ticket.Title + " has been modified.",
+                            Description = "(#" + ticket.Id + ") " + ticket.Title + " has been modified.",
                             Type = "Modification",
                             Created = System.DateTimeOffset.Now,
                             NotifyUserId = ticket.AssignedToUserId, //assigned userId
@@ -338,7 +338,7 @@ namespace Ryan_BugTracker.Controllers
                         Notification c1 = new Notification
                         {
                             TicketId = ticket.Id,
-                            Description = ticket.Title + " has been modified.",
+                            Description = "(#" + ticket.Id + ") " + ticket.Title + " has been modified.",
                             Type = "Modification",
                             Created = System.DateTimeOffset.Now,
                             NotifyUserId = oldTic.AuthorUserId, //author userId
@@ -534,7 +534,7 @@ namespace Ryan_BugTracker.Controllers
                 Notification n = new Notification
                 {
                     TicketId = ticket.Id,
-                    Description = "NEW Assignment: " + ticket.Title,
+                    Description = "(#" + ticket.Id + ") " + "NEW Assignment: " + ticket.Title,
                     Type = "Assignment",
                     Created = System.DateTimeOffset.Now,
                     NotifyUserId = ticket.AssignedToUserId, //assigned userId
@@ -545,7 +545,7 @@ namespace Ryan_BugTracker.Controllers
                 Notification c = new Notification
                 {
                     TicketId = ticket.Id,
-                    Description = "NEW Assignment: " + ticket.Title,
+                    Description = "(#" + ticket.Id + ") " + "NEW Assignment: " + ticket.Title,
                     Type = "Assignment",
                     Created = System.DateTimeOffset.Now,
                     NotifyUserId = oldTic.AuthorUserId, //author userId
@@ -611,7 +611,7 @@ namespace Ryan_BugTracker.Controllers
                     Notification n2 = new Notification
                     {
                         TicketId = ticket.Id,
-                        Description = "New comment for " + ticket.Title,
+                        Description = "(#" + ticket.Id + ") " + "New comment for " + ticket.Title,
                         Type = "Comment",
                         Created = System.DateTimeOffset.Now,
                         NotifyUserId = ticket.AssignedToUserId, //assigned userId
@@ -622,7 +622,7 @@ namespace Ryan_BugTracker.Controllers
                     Notification c2 = new Notification
                     {
                         TicketId = ticket.Id,
-                        Description = "New comment for " + ticket.Title,
+                        Description = "(#" + ticket.Id + ") " + "New comment for " + ticket.Title,
                         Type = "Comment",
                         Created = System.DateTimeOffset.Now,
                         NotifyUserId = ticket.AuthorUserId, //author userId
@@ -808,7 +808,7 @@ namespace Ryan_BugTracker.Controllers
                     Notification n3 = new Notification
                     {
                         TicketId = ticket.Id,
-                        Description = "New attachment for " + ticket.Title,
+                        Description = "(#" + ticket.Id + ") " + "New attachment for " + ticket.Title,
                         Type = "Attachment",
                         Created = System.DateTimeOffset.Now,
                         NotifyUserId = ticket.AssignedToUserId, //assigned userId
@@ -819,7 +819,7 @@ namespace Ryan_BugTracker.Controllers
                     Notification c3 = new Notification
                     {
                         TicketId = ticket.Id,
-                        Description = "New attachment for " + ticket.Title,
+                        Description = "(#" + ticket.Id + ") " + "New attachment for " + ticket.Title,
                         Type = "Attachment",
                         Created = System.DateTimeOffset.Now,
                         NotifyUserId = ticket.AuthorUserId, //author userId

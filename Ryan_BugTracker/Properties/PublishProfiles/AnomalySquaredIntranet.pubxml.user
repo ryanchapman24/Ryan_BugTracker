@@ -79,7 +79,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:48</publishTime>
     </File>
     <File Include="assets/css/main.css">
-      <publishTime>09/07/2016 14:40:22</publishTime>
+      <publishTime>12/01/2016 12:57:12</publishTime>
     </File>
     <File Include="assets/css/my-custom-styles.css">
       <publishTime>09/29/2016 17:57:19</publishTime>
@@ -973,7 +973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
-      <publishTime>12/01/2016 11:30:07</publishTime>
+      <publishTime>12/01/2016 12:32:31</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll.config">
       <publishTime>09/27/2016 16:06:37</publishTime>
@@ -1972,7 +1972,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/06/2016 14:36:41</publishTime>
     </File>
     <File Include="Views/Shared/_RyanLayout.cshtml">
-      <publishTime>10/03/2016 11:23:04</publishTime>
+      <publishTime>12/01/2016 12:54:33</publishTime>
     </File>
     <File Include="Views/Tickets/Create.cshtml">
       <publishTime>10/03/2016 12:26:33</publishTime>
