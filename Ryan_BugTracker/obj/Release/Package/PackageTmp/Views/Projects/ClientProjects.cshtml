@@ -31,7 +31,7 @@
                     <th>Updated</th>
                     <th>Name</th>
                     <th>Assigned Users</th>
-                    <th># Tickets</th>
+                    <th># Open Tickets</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -60,7 +60,7 @@
                                 }
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Tickets.Count)
+                                @item.Tickets.Where(t => t.TicketStatusId != 5).Count()
                             </td>
                             <td>
                                 <a href="@Url.Action("Create", "Tickets", new { id = item.Id }, null)"><i class="fa fa-plus" style="margin-right: 3px; font-size: 16px"></i> Create Ticket</a><br />

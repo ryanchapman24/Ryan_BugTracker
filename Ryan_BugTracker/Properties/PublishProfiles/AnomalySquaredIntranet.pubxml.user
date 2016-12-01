@@ -973,7 +973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
-      <publishTime>12/01/2016 13:00:59</publishTime>
+      <publishTime>12/01/2016 16:35:57</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll.config">
       <publishTime>09/27/2016 16:06:37</publishTime>
