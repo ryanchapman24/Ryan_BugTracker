@@ -205,7 +205,7 @@
                         </div>
                     </div>
                     <div class="widget-content" style="padding-left: 20px">
-                        @foreach (var comment in Model.TicketComments)
+                        @foreach (var comment in Model.TicketComments.OrderByDescending(t => t.Created))
                         {
                             <div class="media">
                                 <a class="pull-left" href="#">
@@ -414,25 +414,25 @@
     </div>
 </div>
 
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 
-            <script>
+    <script>
 
-                /*============================================
-                ScrollTo Links
-                ==============================================*/
+        /*============================================
+        ScrollTo Links
+        ==============================================*/
 
-                $(function () {
-                    $('#scrollToBottom').bind("click", function () {
-                        $('html, body').animate({ scrollTop: $(document).height() });
-                        return false;
-                    });
-                    $('#scrollToTop').bind("click", function () {
-                        $('html, body').animate({ scrollTop: 0 });
-                        return false;
-                    });
-                });
+        $(function () {
+            $('#scrollToBottom').bind("click", function () {
+                $('html, body').animate({ scrollTop: $(document).height() });
+                return false;
+            });
+            $('#scrollToTop').bind("click", function () {
+                $('html, body').animate({ scrollTop: 0 });
+                return false;
+            });
+        });
 
-            </script>
-        }
+    </script>
+}

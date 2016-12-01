@@ -116,7 +116,7 @@
                                 <li>
                                     <i class="fa fa-comment activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> commented on <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> commented on <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -126,7 +126,7 @@
                                 <li>
                                     <i class="fa fa-file activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> added an attachment to <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> added an attachment to <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -136,7 +136,7 @@
                                 <li>
                                     <i class="fa fa-edit activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the status of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the status of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -146,7 +146,7 @@
                                 <li>
                                     <i class="fa fa-edit activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName </span> changed the priority of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName </span> changed the priority of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -156,7 +156,7 @@
                                 <li>
                                     <i class="fa fa-edit activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the name of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the name of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -166,7 +166,7 @@
                                 <li>
                                     <i class="fa fa-edit activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the project for <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the project for <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -176,7 +176,7 @@
                                 <li>
                                     <i class="fa fa-edit activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the description of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the description of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -186,7 +186,7 @@
                                 <li>
                                     <i class="fa fa-edit activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the name of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName</span> changed the name of <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })">@activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;
@@ -196,7 +196,7 @@
                                 <li>
                                     <i class="fa fa-ticket activity-icon pull-left"></i>
                                     <p>
-                                        <span style="color: #337ab7">@activity.User.FirstName </span> created a ticket: <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })"> @activity.Ticket.Title </a> <span class="timestamp">@activity.Changed.ToString("g")</span>
+                                        <span style="color: #337ab7">@activity.User.FirstName </span> created a ticket: <a href="@Url.Action("Details", "Tickets", new { id = activity.TicketId })"> @activity.Ticket.Title (#@activity.Ticket.Id)</a> <span class="timestamp">@activity.Changed.ToString("g")</span>
                                     </p>
                                 </li>
                                 processed++;

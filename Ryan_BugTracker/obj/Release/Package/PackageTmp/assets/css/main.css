@@ -15108,7 +15108,7 @@ input {
   margin-bottom: 0;
 }
 .top-bar .notifications .general .dropdown-menu {
-  left: -183px;
+  left: -328px;
 }
 .top-bar .notifications .general .dropdown-menu li a i {
   min-width: 14px;
@@ -15146,7 +15146,7 @@ input {
   color: #fff;
 }
 .top-bar .logged-user .dropdown-menu {
-  right: -13.5px;
+  right: -15.5px;
   top: 31px;
   padding: 0;
 }
