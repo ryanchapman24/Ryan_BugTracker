@@ -62,69 +62,69 @@ namespace Ryan_BugTracker.Migrations
             userManager.AddToRole(userId_Super, "Developer");
             userManager.AddToRole(userId_Super, "Submitter");
 
-            if (!context.Users.Any(u => u.Email == "your email address"))
-            {
-                userManager.Create(new ApplicationUser
-                {
-                    UserName = "administrator@bugtracker.com",
-                    Email = "administrator@bugtracker.com",
-                    FirstName = "Admin",
-                    LastName = "Istrator",
-                    DisplayName = "Administrator Demo",
-                    PhoneNumber = "(###) ###-####"
-                }, "Password-1");
-            }
+            //if (!context.Users.Any(u => u.Email == "your email address"))
+            //{
+            //    userManager.Create(new ApplicationUser
+            //    {
+            //        UserName = "administrator@bugtracker.com",
+            //        Email = "administrator@bugtracker.com",
+            //        FirstName = "Admin",
+            //        LastName = "Istrator",
+            //        DisplayName = "Administrator Demo",
+            //        PhoneNumber = "(###) ###-####"
+            //    }, "Password-1");
+            //}
 
-            var userId_Admin = userManager.FindByEmail("administrator@bugtracker.com").Id;
-            userManager.AddToRole(userId_Admin, "Administrator");
+            //var userId_Admin = userManager.FindByEmail("administrator@bugtracker.com").Id;
+            //userManager.AddToRole(userId_Admin, "Administrator");
 
-            if (!context.Users.Any(u => u.Email == "your email address"))
-            {
-                userManager.Create(new ApplicationUser
-                {
-                    UserName = "projectmanager@bugtracker.com",
-                    Email = "projectmanager@bugtracker.com",
-                    FirstName = "Project",
-                    LastName = "Manager",
-                    DisplayName = "Project Manager Demo",
-                    PhoneNumber = "(###) ###-####"
-                }, "Password-1");
-            }
+            //if (!context.Users.Any(u => u.Email == "your email address"))
+            //{
+            //    userManager.Create(new ApplicationUser
+            //    {
+            //        UserName = "projectmanager@bugtracker.com",
+            //        Email = "projectmanager@bugtracker.com",
+            //        FirstName = "Project",
+            //        LastName = "Manager",
+            //        DisplayName = "Project Manager Demo",
+            //        PhoneNumber = "(###) ###-####"
+            //    }, "Password-1");
+            //}
 
-            var userId_PManager = userManager.FindByEmail("projectmanager@bugtracker.com").Id;
-            userManager.AddToRole(userId_PManager, "Project Manager");
+            //var userId_PManager = userManager.FindByEmail("projectmanager@bugtracker.com").Id;
+            //userManager.AddToRole(userId_PManager, "Project Manager");
 
-            if (!context.Users.Any(u => u.Email == "your email address"))
-            {
-                userManager.Create(new ApplicationUser
-                {
-                    UserName = "developer@bugtracker.com",
-                    Email = "developer@bugtracker.com",
-                    FirstName = "Devel",
-                    LastName = "Oper",
-                    DisplayName = "Developer Demo",
-                    PhoneNumber = "(###) ###-####"
-                }, "Password-1");
-            }
+            //if (!context.Users.Any(u => u.Email == "your email address"))
+            //{
+            //    userManager.Create(new ApplicationUser
+            //    {
+            //        UserName = "developer@bugtracker.com",
+            //        Email = "developer@bugtracker.com",
+            //        FirstName = "Devel",
+            //        LastName = "Oper",
+            //        DisplayName = "Developer Demo",
+            //        PhoneNumber = "(###) ###-####"
+            //    }, "Password-1");
+            //}
 
-            var userId_Developer = userManager.FindByEmail("developer@bugtracker.com").Id;
-            userManager.AddToRole(userId_Developer, "Developer");
+            //var userId_Developer = userManager.FindByEmail("developer@bugtracker.com").Id;
+            //userManager.AddToRole(userId_Developer, "Developer");
 
-            if (!context.Users.Any(u => u.Email == "your email address"))
-            {
-                userManager.Create(new ApplicationUser
-                {
-                    UserName = "submitter@bugtracker.com",
-                    Email = "submitter@bugtracker.com",
-                    FirstName = "Sub",
-                    LastName = "Mitter",
-                    DisplayName = "Submitter Demo",
-                    PhoneNumber = "(###) ###-####"
-                }, "Password-1");
-            }
+            //if (!context.Users.Any(u => u.Email == "your email address"))
+            //{
+            //    userManager.Create(new ApplicationUser
+            //    {
+            //        UserName = "submitter@bugtracker.com",
+            //        Email = "submitter@bugtracker.com",
+            //        FirstName = "Sub",
+            //        LastName = "Mitter",
+            //        DisplayName = "Submitter Demo",
+            //        PhoneNumber = "(###) ###-####"
+            //    }, "Password-1");
+            //}
 
-            var userId_Submitter = userManager.FindByEmail("submitter@bugtracker.com").Id;
-            userManager.AddToRole(userId_Submitter, "Submitter");
+            //var userId_Submitter = userManager.FindByEmail("submitter@bugtracker.com").Id;
+            //userManager.AddToRole(userId_Submitter, "Submitter");
         }
     }
 }
