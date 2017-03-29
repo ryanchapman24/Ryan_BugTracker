@@ -314,7 +314,7 @@ namespace Ryan_BugTracker.Controllers
                             var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
                             await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "Ticket Updated: " + ticket.Title, "This ticket has been updated with respect to its:<br /><br />" + changes + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                         }
-                        if (ticketCreator != null)
+                        if (ticketCreator != null && ticketCreator != userToNotify.Id)
                         {
                             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                             // Send an email with this link       
@@ -335,17 +335,20 @@ namespace Ryan_BugTracker.Controllers
                         };
                         db.Notifications.Add(n1);
                         db.SaveChanges();
-
-                        Notification c1 = new Notification
+                        
+                        if (ticket.AssignedToUserId != oldTic.AuthorUserId)
                         {
-                            TicketId = ticket.Id,
-                            Description = "(#" + ticket.Id + ") " + ticket.Title + " has been modified.",
-                            Type = "Modification",
-                            Created = System.DateTimeOffset.Now,
-                            NotifyUserId = oldTic.AuthorUserId, //author userId
-                        };
-                        db.Notifications.Add(c1);
-                        db.SaveChanges();
+                            Notification c1 = new Notification
+                            {
+                                TicketId = ticket.Id,
+                                Description = "(#" + ticket.Id + ") " + ticket.Title + " has been modified.",
+                                Type = "Modification",
+                                Created = System.DateTimeOffset.Now,
+                                NotifyUserId = oldTic.AuthorUserId, //author userId
+                            };
+                            db.Notifications.Add(c1);
+                            db.SaveChanges();
+                        }                   
                     }
                 }
 
@@ -521,7 +524,7 @@ namespace Ryan_BugTracker.Controllers
                     var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "NEW Ticket Assignment", "You've been assigned to a new ticket!  Please click <a href=\"" + callbackUrl + "\">here</a> to view it.");
                 }
-                if (ticketCreator != null)
+                if (ticketCreator != null && ticketCreator != userToNotify.Id)
                 {
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link          
@@ -543,16 +546,19 @@ namespace Ryan_BugTracker.Controllers
                 db.Notifications.Add(n);
                 db.SaveChanges();
 
-                Notification c = new Notification
+                if (ticket.AssignedToUserId != oldTic.AuthorUserId)
                 {
-                    TicketId = ticket.Id,
-                    Description = "(#" + ticket.Id + ") " + "NEW Assignment: " + ticket.Title,
-                    Type = "Assignment",
-                    Created = System.DateTimeOffset.Now,
-                    NotifyUserId = oldTic.AuthorUserId, //author userId
-                };
-                db.Notifications.Add(c);
-                db.SaveChanges();
+                    Notification c = new Notification
+                    {
+                        TicketId = ticket.Id,
+                        Description = "(#" + ticket.Id + ") " + "NEW Assignment: " + ticket.Title,
+                        Type = "Assignment",
+                        Created = System.DateTimeOffset.Now,
+                        NotifyUserId = oldTic.AuthorUserId, //author userId
+                    };
+                    db.Notifications.Add(c);
+                    db.SaveChanges();
+                }
             }
 
             return RedirectToAction("Index", "Home");
@@ -602,7 +608,7 @@ namespace Ryan_BugTracker.Controllers
                         var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
                         await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "NEW Ticket Comment: " + ticket.Title, "A new comment has been added to this ticket:<br /><br /><em>" + '"' + comment.Body + '"' + "<br /><br /></em>" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                     }
-                    if (ticketCreator != null)
+                    if (ticketCreator != null && ticketCreator != userToNotify.Id)
                     {
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link       
@@ -620,17 +626,19 @@ namespace Ryan_BugTracker.Controllers
                     };
                     db.Notifications.Add(n2);
                     db.SaveChanges();
-
-                    Notification c2 = new Notification
+                    if (ticket.AssignedToUserId != ticket.AuthorUserId)
                     {
-                        TicketId = ticket.Id,
-                        Description = "(#" + ticket.Id + ") " + "New comment for " + ticket.Title,
-                        Type = "Comment",
-                        Created = System.DateTimeOffset.Now,
-                        NotifyUserId = ticket.AuthorUserId, //author userId
-                    };
-                    db.Notifications.Add(c2);
-                    db.SaveChanges();
+                        Notification c2 = new Notification
+                        {
+                            TicketId = ticket.Id,
+                            Description = "(#" + ticket.Id + ") " + "New comment for " + ticket.Title,
+                            Type = "Comment",
+                            Created = System.DateTimeOffset.Now,
+                            NotifyUserId = ticket.AuthorUserId, //author userId
+                        };
+                        db.Notifications.Add(c2);
+                        db.SaveChanges();
+                    }
                 }
             }
 
@@ -800,7 +808,7 @@ namespace Ryan_BugTracker.Controllers
                         var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
                         await UserManager.SendEmailAsync(userToNotify.Id, "(#" + ticket.Id + ") " + "NEW Ticket Attachment(s): " + ticket.Title, "New attachments have been added to this ticket:<br /><br />" + attachments + "<br />" + "Please click <a href=\"" + callbackUrl + "\">here</a> to view the ticket.");
                     }
-                    if (ticketCreator != null)
+                    if (ticketCreator != null && ticketCreator != userToNotify.Id)
                     {
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link       
@@ -819,16 +827,19 @@ namespace Ryan_BugTracker.Controllers
                     db.Notifications.Add(n3);
                     db.SaveChanges();
 
-                    Notification c3 = new Notification
+                    if (ticket.AssignedToUserId != ticket.AuthorUserId)
                     {
-                        TicketId = ticket.Id,
-                        Description = "(#" + ticket.Id + ") " + "New attachment for " + ticket.Title,
-                        Type = "Attachment",
-                        Created = System.DateTimeOffset.Now,
-                        NotifyUserId = ticket.AuthorUserId, //author userId
-                    };
-                    db.Notifications.Add(c3);
-                    db.SaveChanges();
+                        Notification c3 = new Notification
+                        {
+                            TicketId = ticket.Id,
+                            Description = "(#" + ticket.Id + ") " + "New attachment for " + ticket.Title,
+                            Type = "Attachment",
+                            Created = System.DateTimeOffset.Now,
+                            NotifyUserId = ticket.AuthorUserId, //author userId
+                        };
+                        db.Notifications.Add(c3);
+                        db.SaveChanges();
+                    }
                 }
             }
 
