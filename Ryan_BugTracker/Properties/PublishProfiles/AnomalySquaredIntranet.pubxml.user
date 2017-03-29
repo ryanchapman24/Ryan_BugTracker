@@ -394,7 +394,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/06/2016 14:59:46</publishTime>
     </File>
     <File Include="assets/js/king-common.js">
-      <publishTime>09/02/2016 12:30:48</publishTime>
+      <publishTime>03/29/2017 15:29:28</publishTime>
     </File>
     <File Include="assets/js/king-components-transparent.js">
       <publishTime>09/02/2016 12:30:48</publishTime>
@@ -973,7 +973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2016 12:30:49</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll">
-      <publishTime>12/01/2016 16:35:57</publishTime>
+      <publishTime>03/29/2017 15:35:15</publishTime>
     </File>
     <File Include="bin/Ryan_BugTracker.dll.config">
       <publishTime>09/27/2016 16:06:37</publishTime>
